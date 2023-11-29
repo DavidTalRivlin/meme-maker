@@ -1,26 +1,26 @@
 'use strict'
 
-function onInitGallery(){
+function onInitGallery() {
     renderGallery()
 
 }
 
-function renderGallery(){
+function renderGallery() {
 
-    var elGallery = document.querySelector('.img-section')  
+    var elGallery = document.querySelector('.img-section')
     var strHtml = ''
-    
-   gImgs.forEach(img => {
-    strHtml +=   
-    `<img src="${img.url}" data-id="${img.id}" alt="" onclick="onImgSelect(this)">`
+
+    gImgs.forEach(img => {
+        strHtml +=
+            `<img src="${img.url}" data-id="${img.id}" alt="" onclick="onImgSelect(this)">`
     });
 
     elGallery.innerHTML = strHtml
 }
 
-function onImgSelect(elImg){
+function onImgSelect(elImg) {
 
-    var imgId = elImg.dataset.id 
+    var imgId = elImg.dataset.id
     setImg(imgId)
     renderMeme()
 }

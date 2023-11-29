@@ -12,13 +12,11 @@ function onInitMeme() {
 
 }
 
-
 function renderMeme() {
     const { selectedImgId, lines } = getMeme()
     renderImg(selectedImgId, lines)
 
 }
-
 
 function renderImg(imgId, lines) {
     const elImg = new Image()
@@ -43,8 +41,6 @@ function renderImg(imgId, lines) {
             renderText(line, x, y)
         });
 
-
-
     }
 }
 
@@ -60,10 +56,10 @@ function renderText(line, x, y) {
     gCtx.font = `${line.size}px Impact`
     gCtx.textAlign = line.textAlign
     gCtx.textBaseline = 'middle'
+
     gCtx.fillText(line.txt, x, y)
     gCtx.strokeText(line.txt, x, y)
 }
-
 
 function onSetLineText(ev) {
     const txt = ev.target.value
@@ -77,7 +73,6 @@ function onSetFillColor(ev) {
     renderMeme()
 }
 
-
 function onSetOutlineColor(ev) {
     setOutlineColor(ev.target.value)
     renderMeme()
@@ -87,4 +82,13 @@ function onSetFontSize(value) {
     setFontSize(value)
     renderMeme()
 
+}
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
+
+function onSwitchLine() {
+    switchLine()
 }

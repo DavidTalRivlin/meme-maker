@@ -15,10 +15,10 @@
 
     </section>
 
-    
+
 
     <section class="editor-section">Editor
-        
+
         <main class="canvas-container">
             <canvas width="500" height="500"></canvas>
         </main>
@@ -27,15 +27,19 @@
         <aside>
             <input type="text" placeholder="type here...." onkeyup="onSetLineText(event)">
             <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpeg">Download</a>
-            <label for="fill-color">Fill Color: </label><input type="color" name="fill-color" value="#ffffff" onchange="onSetFillColor(event)">
-            <label for="outline-color">Outline Color: </label><input type="color" name="outline-color" value="#000000" onchange="onSetOutlineColor(event)">
-            <button onclick="onSetFontSize('+')" > + </button>
-            <button onclick="onSetFontSize('-')" > - </button>
+            <label for="fill-color">Fill Color: </label><input type="color" name="fill-color" value="#ffffff"
+                onchange="onSetFillColor(event)">
+            <label for="outline-color">Outline Color: </label><input type="color" name="outline-color" value="#000000"
+                onchange="onSetOutlineColor(event)">
+            <button onclick="onSetFontSize('+')"> + </button>
+            <button onclick="onSetFontSize('-')"> - </button>
+            <button onclick="onAddLine()">Add line</button>
+            <button onclick="onSwitchLine()">Switch Line</button>
 
         </aside>
 
 
-        
+
     </section>
 
 
