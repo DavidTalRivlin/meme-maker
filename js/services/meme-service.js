@@ -22,10 +22,22 @@ function getMeme(){
 
 
 function setLineText(txt){
-    console.log (txt, 'setlinetext')
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
+
 function setImg(imgId){
     gMeme.selectedImgId = imgId
+}
+
+
+function setFontSize(value){
+    (value === '+') ? gMeme.lines[gMeme.selectedLineIdx].size++ : gMeme.lines[gMeme.selectedLineIdx].size-- 
+}
+
+function setFillColor(value){
+    gMeme.lines[gMeme.selectedLineIdx].fill = value
+}
+function setOutlineColor(value){
+    gMeme.lines[gMeme.selectedLineIdx].color = value
 }

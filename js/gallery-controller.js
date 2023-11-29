@@ -8,7 +8,6 @@ function onInitGallery(){
 function renderGallery(){
 
     var elGallery = document.querySelector('.img-section')  
-    console.log('gImgs', gImgs)
     var strHtml = ''
     
    gImgs.forEach(img => {

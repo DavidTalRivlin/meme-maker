@@ -2,9 +2,6 @@
 let gElCanvas
 
 
-let gFillColor = 'white'
-let gOutlineColor = 'black'
-
 
 function onInitMeme() {
     onInitGallery()
@@ -60,7 +57,7 @@ function renderText(line, x, y) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.color
     gCtx.fillStyle = line.fill
-    gCtx.font = `${line.size}px Arial`
+    gCtx.font = `${line.size}px Impact`
     gCtx.textAlign = line.textAlign
     gCtx.textBaseline = 'middle'
     gCtx.fillText(line.txt, x, y)
@@ -76,11 +73,18 @@ function onSetLineText(ev) {
 }
 
 function onSetFillColor(ev) {
-    gFillColor = ev.target.value
-
+    setFillColor(ev.target.value)
+    renderMeme()
 }
 
 
 function onSetOutlineColor(ev) {
-    gOutlineColor = ev.target.value
+    setOutlineColor(ev.target.value)
+    renderMeme()
+}
+
+function onSetFontSize(value) {
+    setFontSize(value)
+    renderMeme()
+
 }
