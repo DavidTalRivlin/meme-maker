@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="onInit()">
 
     <section class="img-section">Gallery</section>
 
@@ -16,7 +16,7 @@
     <section class="editor-section">Editor
         
         <div class="canvas-container">
-            <canvas width="500" height="500" onmousedown="onDraw(event)"></canvas>
+            <canvas width="500" height="500"></canvas>
         </div>
 
     </section>
@@ -28,6 +28,6 @@
 <script src="js/services/i18n.service.js"></script>
 <script src="js/services/storage-service.js"></script>
 <script src="js/services/meme-service.js"></script>
-<script src="js/meme-controller.js"></script>
+<script src="js/controller.js"></script>
 
 </html>
