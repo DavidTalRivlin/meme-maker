@@ -8,17 +8,18 @@ function onInit() {
 
 
 function renderMeme() {
-    renderImg()
+    var currMeme = getMeme()
+    renderImg(currMeme.selectedImgId, currMeme.lines[0].txt)
 }
 
-function renderImg() {
+function renderImg(imgId,txt) {
     const elImg = new Image()
-    elImg.src = '../img/meme-imgs (square)/1.jpg'
+    elImg.src = `../img/meme-imgs (square)/${imgId}.jpg`
 
     // When the image ready draw it on the canvas
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        renderText('hello', 250, 100)
+        renderText(txt, 250, 100)
 
     }
 }
