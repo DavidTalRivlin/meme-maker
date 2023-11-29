@@ -8,13 +8,27 @@ function onInitMeme() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     renderMeme()
-
+    setEventListener()
 
 }
 
 function renderMeme() {
     const { selectedImgId, lines } = getMeme()
     renderImg(selectedImgId, lines)
+
+}
+
+
+function setEventListener() {
+    const fillColorPicker = document.querySelector('.fill-color')
+    fillColorPicker.addEventListener('input', () => {
+        onSetFillColor(fillColorPicker.value)
+    });
+
+    const outlineColorPicker = document.querySelector('.outline-color')
+    outlineColorPicker.addEventListener('input', () => {
+        onSetOutlineColor(outlineColorPicker.value)
+    });
 
 }
 
@@ -38,9 +52,9 @@ function renderImg(imgId, lines) {
                 x = gElCanvas.width / 2
                 y = gElCanvas.height / 2
             }
-            renderText(line, x, y)
+            renderText(line, x, y, idx)
         });
-
+        highlightLine()
     }
 }
 
@@ -49,7 +63,7 @@ function downloadImg(elLink) {
     elLink.href = imgContent
 }
 
-function renderText(line, x, y) {
+function renderText(line, x, y, lineIdx) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.color
     gCtx.fillStyle = line.fill
@@ -59,22 +73,27 @@ function renderText(line, x, y) {
 
     gCtx.fillText(line.txt, x, y)
     gCtx.strokeText(line.txt, x, y)
+
+    setTextPos(x, y, lineIdx)
+    setTextBoundry(lineIdx)
+
+
+
 }
 
 function onSetLineText(ev) {
     const txt = ev.target.value
-    console.log(txt)
     setLineText(txt)
     renderMeme()
 }
 
-function onSetFillColor(ev) {
-    setFillColor(ev.target.value)
+function onSetFillColor(value) {
+    setFillColor(value)
     renderMeme()
 }
 
-function onSetOutlineColor(ev) {
-    setOutlineColor(ev.target.value)
+function onSetOutlineColor(value) {
+    setOutlineColor(value)
     renderMeme()
 }
 

@@ -37,7 +37,7 @@ function setFontSize(value) {
 
 
 function setFillColor(value) {
-    Me
+
     gMeme.lines[gMeme.selectedLineIdx].fill = value
 }
 
@@ -53,41 +53,69 @@ function addLine() {
 
 
 function switchLine() {
-    if (gMeme.selectedLineIdx < gMeme.lines.length-1) {
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
         gMeme.selectedLineIdx++
     } else {
         gMeme.selectedLineIdx = 0
     }
+    renderMeme()
+    // setTimeout(highlightLine, 200)
 }
-   
-//    function highlightLine(){
-
-//        const textMetrics = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt);
-//        ctx.beginPath();
-
-//        var x = gElCanvas.width / 2
-//        var y = 100
-       
 
 
-//        ctx.moveTo(
-//            x - textMetrics.actualBoundingBoxLeft,
-//            y - textMetrics.actualBoundingBoxAscent
-//        );
-//        ctx.lineTo(
-//            x + textMetrics.actualBoundingBoxRight,
-//            y - textMetrics.actualBoundingBoxAscent
-//        );
-//        ctx.lineTo(
-//            x + textMetrics.actualBoundingBoxRight,
-//            y + textMetrics.actualBoundingBoxDescent
-//        );
-//        ctx.lineTo(
-//            x - textMetrics.actualBoundingBoxLeft,
-//            y + textMetrics.actualBoundingBoxDescent
-//        );
-//        ctx.closePath();
-//        ctx.stroke();
+function highlightLine() {
 
-//    }   
+
+    var currLine = gMeme.lines[gMeme.selectedLineIdx]
+
+    gCtx.beginPath();
+
+    var x = currLine.pos.x
+    var y = currLine.pos.y
+
+    gCtx.moveTo(
+        x - currLine.boundry.xLeft - 5,
+        y - currLine.boundry.yTop - 5
+    );
+    gCtx.lineTo(
+        x + currLine.boundry.xRight + 5,
+        y - currLine.boundry.yTop - 5
+    );
+    gCtx.lineTo(
+        x + currLine.boundry.xRight + 5,
+        y + currLine.boundry.yBottom + 5
+    );
+    gCtx.lineTo(
+        x - currLine.boundry.xLeft - 5,
+        y + currLine.boundry.yBottom + 5
+    );
+    gCtx.strokeStyle = 'white'
+    gCtx.lineWidth = 1
+    gCtx.closePath();
+    gCtx.stroke();
+}
+
+
+function setTextPos(x, y, lineIdx) {
+    gMeme.lines[lineIdx]['pos'] = { x, y }
+}
+
+
+function setTextBoundry(lineIdx) {
+    // var box = getTextBoundry(lineIdx)
+    var { actualBoundingBoxRight, actualBoundingBoxLeft, actualBoundingBoxAscent, actualBoundingBoxDescent } = getTextBoundry(lineIdx)
+    gMeme.lines[lineIdx]['boundry'] = {
+        xLeft: actualBoundingBoxLeft,
+        xRight: actualBoundingBoxRight,
+        yTop: actualBoundingBoxDescent,
+        yBottom: actualBoundingBoxAscent
+    }
+}
+
+
+function getTextBoundry(lineIdx) {
+    return gCtx.measureText(gMeme.lines[lineIdx].txt)
+
+}
+
 

@@ -26,11 +26,15 @@
 
         <aside>
             <input type="text" placeholder="type here...." onkeyup="onSetLineText(event)">
+
             <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpeg">Download</a>
-            <label for="fill-color">Fill Color: </label><input type="color" name="fill-color" value="#ffffff"
-                onchange="onSetFillColor(event)">
-            <label for="outline-color">Outline Color: </label><input type="color" name="outline-color" value="#000000"
-                onchange="onSetOutlineColor(event)">
+
+            <label for="fill-color">Fill Color: </label>
+            <input class="fill-color" type="color" name="fill-color" value="#ffffff">
+
+            <label for="outline-color">Outline Color: </label>
+            <input class="outline-color" type="color" name="outline-color" value="#000000">
+
             <button onclick="onSetFontSize('+')"> + </button>
             <button onclick="onSetFontSize('-')"> - </button>
             <button onclick="onAddLine()">Add line</button>
