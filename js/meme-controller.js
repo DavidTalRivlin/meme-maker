@@ -9,6 +9,7 @@ function onInitMeme() {
     gCtx = gElCanvas.getContext('2d')
     renderMeme()
     setEventListener()
+    showLineTextInValue()
 
 }
 
@@ -17,7 +18,6 @@ function renderMeme() {
     renderImg(selectedImgId, lines)
 
 }
-
 
 function setEventListener() {
     const fillColorPicker = document.querySelector('.fill-color')
@@ -109,5 +109,13 @@ function onAddLine() {
 }
 
 function onSwitchLine() {
+    
     switchLine()
+    showLineTextInValue()
+}
+
+function showLineTextInValue(){
+    var elText = document.querySelector('.line-value')
+    console.log('elText', elText)
+    elText.value = getTextValue()
 }

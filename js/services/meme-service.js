@@ -14,7 +14,9 @@ var gMeme = {
     ]
 }
 
+
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+
 
 function getMeme() {
     return gMeme
@@ -58,6 +60,8 @@ function switchLine() {
     } else {
         gMeme.selectedLineIdx = 0
     }
+    
+   
     renderMeme()
     // setTimeout(highlightLine, 200)
 }
@@ -93,6 +97,13 @@ function highlightLine() {
     gCtx.lineWidth = 1
     gCtx.closePath();
     gCtx.stroke();
+}
+
+
+function getTextValue(){
+return gMeme.lines[gMeme.selectedLineIdx].txt
+
+    
 }
 
 
