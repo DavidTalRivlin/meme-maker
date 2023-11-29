@@ -8,11 +8,12 @@ function onInit() {
 
 
 function renderMeme() {
-    var currMeme = getMeme()
-    renderImg(currMeme.selectedImgId, currMeme.lines[0].txt)
+    const { selectedImgId, lines } = getMeme()
+    renderImg(selectedImgId, lines[0].txt)
 }
 
-function renderImg(imgId,txt) {
+
+function renderImg(imgId, txt) {
     const elImg = new Image()
     elImg.src = `../img/meme-imgs (square)/${imgId}.jpg`
 
@@ -24,10 +25,6 @@ function renderImg(imgId,txt) {
     }
 }
 
-// function onRenderText(ev){
-//     const { offsetX, offsetY } = ev
-//     renderText('Hello', offsetX, offsetY)
-// }
 
 function renderText(text, x, y) {
     gCtx.lineWidth = 1
@@ -38,4 +35,12 @@ function renderText(text, x, y) {
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
+}
+
+
+function onSetLineText(ev) {
+    const txt = ev.target.value
+    console.log(txt)
+    setLineText(txt)
+    renderMeme()
 }
