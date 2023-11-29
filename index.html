@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Maker</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    
-<section class="img-section">Gallery</section>
+
+    <section class="img-section">Gallery</section>
 
 
-<section class="editor-section">Editor</section>
+    <section class="editor-section">Editor
+        
+        <div class="canvas-container">
+            <canvas width="500" height="500" onmousedown="onDraw(event)"></canvas>
+        </div>
+
+    </section>
 
 
 </body>
@@ -20,6 +28,6 @@
 <script src="js/services/i18n.service.js"></script>
 <script src="js/services/storage-service.js"></script>
 <script src="js/services/meme-service.js"></script>
-<script src="js/controller.js"></script>
+<script src="js/meme-controller.js"></script>
 
 </html>
