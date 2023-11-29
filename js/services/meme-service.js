@@ -9,7 +9,8 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        { txt: 'I sometimes eat Falafel', size: 20, color: 'red' }
+        { txt: 'I sometimes eat Falafel', size: 30, color: 'red' , fill:'black', textAlign:'center' },
+        { txt: 'I dont like the 2nd row', size: 30, color: 'white' , fill:'black', textAlign:'center'}
         ]
 }
 
