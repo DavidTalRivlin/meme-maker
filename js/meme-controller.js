@@ -1,6 +1,7 @@
 'use stirct'
 
-function onInit() {
+function onInitMeme() {
+    onInitGallery()
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     renderMeme()
@@ -15,7 +16,7 @@ function renderMeme() {
 
 function renderImg(imgId, txt) {
     const elImg = new Image()
-    elImg.src = `../img/meme-imgs (square)/${imgId}.jpg`
+    elImg.src = `../img/meme-imgs-square/${imgId}.jpg`
 
     // When the image ready draw it on the canvas
     elImg.onload = () => {
