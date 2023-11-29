@@ -53,7 +53,7 @@ function addLine() {
 
 
 function switchLine() {
-    if (gMeme.selectedLineIdx < gMeme.lines.length) {
+    if (gMeme.selectedLineIdx < gMeme.lines.length-1) {
         gMeme.selectedLineIdx++
     } else {
         gMeme.selectedLineIdx = 0
