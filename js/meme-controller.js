@@ -9,7 +9,7 @@ function onInitMeme() {
     gCtx = gElCanvas.getContext('2d')
     renderMeme()
     setEventListener()
-    showLineTextInValue()
+    SetInputVal()
 
 }
 
@@ -111,11 +111,10 @@ function onAddLine() {
 function onSwitchLine() {
     
     switchLine()
-    showLineTextInValue()
+    SetInputVal()
 }
 
-function showLineTextInValue(){
+function SetInputVal(){
     var elText = document.querySelector('.line-value')
-    console.log('elText', elText)
     elText.value = getTextValue()
 }
