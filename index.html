@@ -15,20 +15,43 @@
             <div class="logo">
                 🐑 Meeeeeh Maker
             </div>
-            <img class="manu-btn btn" src="./icons/Forme 1.png" alt="" srcset="">
-            <!-- <nav>
-            <button class="header-btn clean-btn"> Gallery</button>
-            <button class="header-btn clean-btn"> About</button>
-        </nav> -->
+            <img class="manu-btn btn" src="./icons/Forme1.png" alt="" srcset="">
+            <nav>
+                <button class="header-btn clean-btn"> Gallery</button>
+                <button class="header-btn clean-btn"> About</button>
+            </nav>
         </section>
     </header>
 
-    <section class="img-section main-layout ">
+    <section class="gallary-conatiner full main-layout">
+
+        <div class="search-box flex space-between align-center">
+            <input class="search-input flex" type="search" placeholder="Search">
+            <img class="search-icon" src="./icons/Forme9mask.png" alt="">
+        </div>
+
+        <div class="commonly-searched-container flex align-center space-between">
+            <div class="commonly-searched flex space-around grow">
+                <button class="common-search-btn clean-btn">Funny</button>
+                <button class="common-search-btn clean-btn">Sad</button>
+                <button class="common-search-btn clean-btn">Smart</button>
+                <button class="common-search-btn clean-btn">Lego</button>
+                <button class="common-search-btn clean-btn">Wow</button>
+                <button class="common-search-btn clean-btn">Irony</button>
+            </div>
+            <div>
+                <button class="more-btn clean-btn">more</button>
+            </div>
+        </div>
+
+
+        <div class="img-section grid gallery-layout">
+        </div>
     </section>
 
 
 
-    <section class="editor-section">Editor
+    <section class="editor-section hidden">Editor
         <main class="canvas-container">
             <canvas width="500" height="500"></canvas>
         </main>

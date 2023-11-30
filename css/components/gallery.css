@@ -1,0 +1,54 @@
+.gallary-conatiner {
+    background-color: var(--clrPrimery);
+    border-radius: 20px;
+    margin: 2em;
+}
+
+.gallery-img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 5%;
+}
+
+.search-box {
+    margin: 1.25em 0 1.25em 0;
+    background-color: var(--clrBase);
+    border-radius: 2em;
+    height: 4em;
+    padding: 20px;
+}
+
+.search-icon {
+    background-image: var(--clrGradiant);
+    fill: var(--clrBase);
+    height: 30px;
+    width: 30px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    font-size: 1.25em;
+    font-family: Poppins;
+}
+
+.commonly-searched {
+    background-color: var(--clrSecondery1);
+    border-radius: 2em;
+    padding: 0.5em;
+    margin-right: 0.5em;
+}
+
+.more-btn {
+    background: var(--clrGradiant);
+    color: var(--clrSecondery3);
+
+    height: 2em;
+    border-radius: 1em;
+    padding: 0 1.5em;
+}
+
+
+.common-search-btn {
+    color: var(--clrSecondery3);
+}

@@ -1,12 +1,24 @@
 .main-layout {
     display: grid;
-    grid-template-columns: 
-    20px 1fr 20px;
+    grid-template-columns:
+        15px 1fr 15px;
 }
 
-.main-layout > .full {
+.main-layout>.full {
     grid-column: 1 / -1;
 }
-.main-layout > *:not(.full) {
+
+.main-layout>*:not(.full) {
     grid-column: 2;
+}
+
+/*Gallery Layout*/
+
+.gallery-layout {
+    margin-top: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+
+
 }

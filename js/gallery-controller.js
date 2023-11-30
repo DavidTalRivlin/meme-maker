@@ -12,7 +12,7 @@ function renderGallery() {
 
     gImgs.forEach(img => {
         strHtml +=
-            `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`
+            `<img src="${img.url}" alt="" class="gallery-img" onclick="onImgSelect(${img.id})">`
     });
 
     elGallery.innerHTML = strHtml
