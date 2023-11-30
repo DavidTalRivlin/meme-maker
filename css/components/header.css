@@ -1,18 +1,18 @@
-header{
-    background-image: var(--clrGradiant);  
+header {
+    background-image: var(--clrGradiant);
 }
 
-.manu-btn{
-    
+.manu-btn {
+
     width: 66px;
-    margin-right: 20px;  
-    cursor: pointer; 
+    margin-right: 20px;
 }
 
-.manu-btn:hover{
-    visibility: ;
-
-.logo{
-    font-size:30px
+.manu-btn:hover {
+    filter: brightness(75%);
 }
 
+
+.logo {
+    font-size: 30px;
+}
