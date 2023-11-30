@@ -34,7 +34,7 @@ function setEventListener() {
 
 function renderImg(imgId, lines) {
     const elImg = new Image()
-    elImg.src = `../img/meme-imgs-square/${imgId}.jpg`
+    elImg.src = `img/meme-imgs-square/${imgId}.jpg`
 
     // When the image ready draw it on the canvas
     elImg.onload = () => {
