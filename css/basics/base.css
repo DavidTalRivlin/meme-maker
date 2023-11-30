@@ -1,3 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  font-family: Poppins;
+  color: var(--clrSecondery3);
+  line-height: 1.7142857;
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+}
+
+img {
+  width: 100%;
+}
+
+
+
+
 canvas {
     background-color: rgb(255, 255, 255);
     border: 1px solid #000000;

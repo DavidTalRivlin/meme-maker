@@ -1,0 +1,26 @@
+:root {
+    /*Gradiant*/
+    --clrGradiant:linear-gradient(to right, #0F9BB3, #30BB73);
+   
+    /*Base colors*/
+    --clrBase: #22252C; /*background */
+    --clrPrimery: #383B42; /*sections and mains*/ 
+    
+    /*Gallery Area */
+    --clrSecondery1: #87898D; /*key words bar */
+    --clrSecondery2: #4f4e4e; /*search input */
+    --clrSecondery3: #FEFEFE; /*header button and text*/
+    
+    /*Meme Area */
+    --clrSecondery4: #EBEEF3; /*line input and buttons*/
+    --clrSecondery5: #33ABC9; /*switch line btn*/
+    --clrSecondery6: #40DD58; /*add line btn*/
+    --clrSecondery7: #E74336; /*delete line btn*/
+    --clrSecondery8: #19A59F; /*text editing area*/
+    --clrSecondery9: #1E7CD3; /*share btn*/
+    --clrSecondery8: #8F44BB; /*download btn*/
+}
+    
+
+ 
+

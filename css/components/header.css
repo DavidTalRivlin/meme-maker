@@ -1,0 +1,18 @@
+header{
+    background-image: var(--clrGradiant);  
+}
+
+.manu-btn{
+    
+    width: 66px;
+    margin-right: 20px;  
+    cursor: pointer; 
+}
+
+.manu-btn:hover{
+    visibility: ;
+
+.logo{
+    font-size:30px
+}
+

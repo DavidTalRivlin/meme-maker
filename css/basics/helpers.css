@@ -1,0 +1,39 @@
+
+/* BUTTONS CLEANER */
+
+.clean-btn {
+    /* background: none; */
+    outline: none;
+    border: none;
+}
+
+/*button setup*/
+.btn {
+    cursor: pointer; 
+     
+}
+
+.btn:hover{
+    filter: brightness(75%);
+}
+
+
+.grid {
+    display: grid;
+}
+
+.grid.align-center {
+    align-items: center;
+}
+
+.grid.justify-content-center {
+    justify-content: center;
+}
+
+.grid.space-between {
+    justify-content: space-between;
+}
+
+.grid.grid-auto-column {
+    grid-auto-flow: column;
+}

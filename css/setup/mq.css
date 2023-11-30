@@ -1,0 +1,30 @@
+@media (max-width: 860px) {
+
+    header{
+        position: relative;
+        height: 100px;
+    }
+    nav{
+        position: absolute;
+        top: -100px;
+      
+
+    }
+
+}
+
+/* SMALL */
+
+@media (min-width: 640px) {
+}
+
+/* MEDIUM */
+
+@media (min-width: 860px) {
+}
+
+/* LARGE */
+
+@media (min-width: 1040px) {
+}
+

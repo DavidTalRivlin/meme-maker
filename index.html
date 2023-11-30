@@ -8,42 +8,46 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="onInitMeme()">
+<body class="main-layout" onload="onInitMeme()">
 
-    <section class="img-section">
+    <header class="main-layout full ">
+        <section class="grid space-between grid-auto-column align-center">
+            <div class="logo">
+                🐑 Meeeeeh Maker
+            </div>
+            <img class="manu-btn btn" src="./icons/Forme 1.png" alt="" srcset="">
+            <!-- <nav>
+            <button class="header-btn clean-btn"> Gallery</button>
+            <button class="header-btn clean-btn"> About</button>
+        </nav> -->
+        </section>
+    </header>
 
-
+    <section class="img-section main-layout ">
     </section>
 
 
 
     <section class="editor-section">Editor
-
         <main class="canvas-container">
             <canvas width="500" height="500"></canvas>
         </main>
-
-
         <aside>
             <input class="line-value" type="text" placeholder="type here...." onkeyup="onSetLineText(event)">
 
             <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpeg">Download</a>
 
             <label for="fill-color">Fill Color: </label>
-            <input class="fill-color" type="color" name="fill-color" value="#ffffff">
+            <input class="fill-color" type="color" id="fill-color" value="#ffffff">
 
             <label for="outline-color">Outline Color: </label>
-            <input class="outline-color" type="color" name="outline-color" value="#000000">
+            <input class="outline-color" type="color" id="outline-color" value="#000000">
 
             <button onclick="onSetFontSize('+')"> + </button>
             <button onclick="onSetFontSize('-')"> - </button>
             <button onclick="onAddLine()">Add line</button>
             <button onclick="onSwitchLine()">Switch Line</button>
-
-
         </aside>
-
-
     </section>
 
 
