@@ -5,13 +5,16 @@ var gImgs = []
 
 _createGallery()
 
+function getImgById(imgId) {
+    return gImgs.find((img)=>imgId === img.id)
+}
 
 /******* private functions ********/
 
 function _createImg(id, keywords) {
     return {
         id,
-        url: `img/meme-imgs-square/${id}.jpg`,
+        url: `./img/meme-imgs-square/${id}.jpg`,
         keywords: keywords || ['nice', 'funny'],
     }
 }

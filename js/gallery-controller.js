@@ -12,15 +12,15 @@ function renderGallery() {
 
     gImgs.forEach(img => {
         strHtml +=
-            `<img src="${img.url}" data-id="${img.id}" alt="" onclick="onImgSelect(this)">`
+            `<img src="${img.url}" alt="" onclick="onImgSelect(${img.id})">`
     });
 
     elGallery.innerHTML = strHtml
 }
 
-function onImgSelect(elImg) {
+function onImgSelect(id) {
 
-    var imgId = elImg.dataset.id
-    setImg(imgId)
+    
+    setImg(id)
     renderMeme()
 }
