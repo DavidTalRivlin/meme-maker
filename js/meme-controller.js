@@ -7,9 +7,10 @@ function onInitMeme() {
     onInitGallery()
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+    resizeCanvas()
+    SetInputVal()
     renderMeme()
     setEventListener()
-    SetInputVal()
 
 }
 
@@ -30,13 +31,16 @@ function setEventListener() {
         onSetOutlineColor(outlineColorPicker.value)
     });
 
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+    })
+    
 }
 
 function renderImg(imgId, lines) {
     
     const elImg = new Image()
     var img = getImgById(imgId)
-    console.log('img', img)
     elImg.src = img.url
 
     // When the image ready draw it on the canvas
@@ -58,6 +62,7 @@ function renderImg(imgId, lines) {
             renderText(line, x, y, idx)
         });
         highlightLine()
+
     }
 }
 
@@ -120,4 +125,12 @@ function onSwitchLine() {
 function SetInputVal(){
     var elText = document.querySelector('.line-value')
     elText.value = getTextValue()
+}
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight //saved for diffret aspet ratio
+    // gElCanvas.height = elContainer.offsetWidth
+    renderMeme()
 }

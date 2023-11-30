@@ -22,5 +22,12 @@ function onImgSelect(id) {
 
     
     setImg(id)
+    var elGallery = document.querySelector('.gallary-conatiner')
+    var elEditor = document.querySelector('.editor-section')
+
+    elGallery.classList.toggle('hidden')
+    elEditor.classList.toggle('hidden')
+    resizeCanvas()
     renderMeme()
+
 }

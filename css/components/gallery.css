@@ -42,7 +42,6 @@
 .more-btn {
     background: var(--clrGradiant);
     color: var(--clrSecondery3);
-
     height: 2em;
     border-radius: 1em;
     padding: 0 1.5em;

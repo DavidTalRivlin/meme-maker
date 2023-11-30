@@ -15,8 +15,9 @@
 /*Gallery Layout*/
 
 .gallery-layout {
-    margin-top: 2em;
+    
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: 2em;
     gap: 10px;
     margin-bottom: 20px;
 
