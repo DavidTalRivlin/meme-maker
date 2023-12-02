@@ -7,7 +7,6 @@ function onInitMeme() {
     onInitGallery()
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    resizeCanvas()
     SetInputVal()
     renderMeme()
     setEventListener()
@@ -34,11 +33,11 @@ function setEventListener() {
     window.addEventListener('resize', () => {
         resizeCanvas()
     })
-    
+
 }
 
 function renderImg(imgId, lines) {
-    
+
     const elImg = new Image()
     var img = getImgById(imgId)
     elImg.src = img.url
@@ -46,22 +45,29 @@ function renderImg(imgId, lines) {
     // When the image ready draw it on the canvas
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        if (!lines.length) return
         lines.forEach((line, idx) => {
             let x
             let y
-            if (idx === 0) {
-                x = gElCanvas.width / 2
-                y = 100
-            } else if (idx === 1) {
-                x = gElCanvas.width / 2
-                y = gElCanvas.height - 100
-            } else {
-                x = gElCanvas.width / 2
-                y = gElCanvas.height / 2
+            if (!gMeme.lines[idx].pos) {
+                if (idx === 0) {
+                    x = gElCanvas.width / 2
+                    y = 100
+                } else if (idx === 1) {
+                    x = gElCanvas.width / 2
+                    y = gElCanvas.height - 100
+                } else {
+                    x = gElCanvas.width / 2
+                    y = gElCanvas.height / 2
+                }
+            }else {
+                x = gMeme.lines[idx].pos.x
+                y = gMeme.lines[idx].pos.y
             }
+            
             renderText(line, x, y, idx)
+            highlightLine()
         });
-        highlightLine()
 
     }
 }
@@ -117,12 +123,12 @@ function onAddLine() {
 }
 
 function onSwitchLine() {
-    
+
     switchLine()
     SetInputVal()
 }
 
-function SetInputVal(){
+function SetInputVal() {
     var elText = document.querySelector('.line-value')
     elText.value = getTextValue()
 }
@@ -132,5 +138,41 @@ function resizeCanvas() {
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight //saved for diffret aspet ratio
     // gElCanvas.height = elContainer.offsetWidth
+    renderMeme()
+}
+
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+}
+
+function openColorPicker(elBtn) {
+    const elInput = elBtn.querySelector('input')
+    elInput.click()
+}
+
+
+function onAlignTextLeft() {
+    alignTextLeft()
+    renderMeme()
+
+}
+function onAlignTextCenter() {
+    alignTextCenter()
+    renderMeme()
+}
+function onAlignTextRight() {
+    alignTextRight()
+    renderMeme()
+}
+
+
+function onMoveLineDown(){
+    moveLineDown()
+    renderMeme()
+}
+
+function onMoveLineUp(){
+    moveLineUp()
     renderMeme()
 }

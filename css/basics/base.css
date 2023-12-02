@@ -15,21 +15,4 @@ body {
   background-color: var(--clrBase);
 }
 
-img {
-  width: 100%;
-}
 
-
-
-.canvas-container{
-  color: aqua;
-}
-
-
-canvas {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #000000;
-  border-radius: 1em;
-  width: 100%;
-  aspect-ratio: 1;
-}

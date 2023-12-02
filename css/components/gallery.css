@@ -1,3 +1,7 @@
+img {
+    width: 100%;
+  }
+  
 .gallary-conatiner {
     background-color: var(--clrPrimery);
     border-radius: 20px;

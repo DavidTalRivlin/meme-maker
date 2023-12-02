@@ -1,0 +1,99 @@
+/* .bg-picture {
+    /* position: absolute; */
+/* z-index: 3; */
+/* filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.8)); */
+/* background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65)); */
+/* opacity: 0.5; */
+
+canvas {
+    z-index: 5;
+    background-color: rgb(255, 255, 255);
+    border: 0.3em solid var(--clrPrimery);
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+aside {
+    margin-block-start: 2em;
+    border: 0.3em solid var(--clrPrimery);
+    background-color: var(--clrPrimery);
+    padding: 1em 1.5em;
+}
+
+
+.editor-section {
+    margin-top: 20px;
+}
+
+.line-value {
+    background-color: var(--clrSecondery4);
+    padding: 0.42em;
+    border-radius: 2em;
+    font-family: Poppins;
+    color: var(--clrSecondery2);
+    font-size: 1.78571428em;
+    text-align: center;
+}
+
+.btn-editor {
+    width: 4.4521em;
+    height: 4.2em;
+    border-radius: 1em;
+}
+
+
+.line-ctrl-btns {
+    margin: 1em;
+    gap: 1em;
+}
+
+.text-editing-container {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items:center ;
+    padding: 1em;
+    background-color: var(--clrSecondery8);
+    gap: 1em;
+}
+
+.text-editing-container>* {
+    justify-self: end;
+}
+
+.text-editing-container> :first-child{
+   justify-self: start;
+}
+
+.text-editing-container> :nth-child(2){
+   justify-self: center;
+}
+
+
+
+.stickers {
+    margin-top: 1em;
+    background-color: var(--clrSecondery4);
+    height: 4em;
+    padding: 0.42em;
+    border-radius: 2em;
+    font-family: Poppins;
+    color: var(--clrSecondery2);
+    font-size: 1.78571428em;
+    text-align: center;
+}
+
+
+.share-download-btns{
+    margin-top: 1.5em;
+}
+
+.share-download-btns > a {
+    padding: 0.5em 0;
+    border-radius: 1em;
+    width: 100%;
+    font-size: 1.5em;
+}
+

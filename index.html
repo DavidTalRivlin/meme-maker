@@ -15,10 +15,13 @@
             <div class="logo">
                 🐑 Meeeeeh Maker
             </div>
-            <img class="manu-btn btn" src="./icons/Forme1.png" alt="" srcset="">
+            <img class="manu-btn btn" src="./icons/manu.png" alt="" srcset="">
             <nav>
+                
                 <button class="header-btn clean-btn"> Gallery</button>
+                <button class="header-btn clean-btn"> Memes</button>
                 <button class="header-btn clean-btn"> About</button>
+                
             </nav>
         </section>
     </header>
@@ -27,7 +30,7 @@
 
         <div class="search-box flex space-between align-center">
             <input class="search-input flex" type="search" placeholder="Search">
-            <img class="search-icon" src="./icons/Forme9mask.png" alt="">
+            <img class="search-icon" src="./icons/search-mask.png" alt="">
         </div>
 
         <div class="commonly-searched-container flex align-center space-between">
@@ -51,25 +54,96 @@
 
 
 
-    <section class="editor-section main-layout hidden ">
-        <main class="canvas-container ">
-            <canvas width="400" height="400"></canvas>
+    <section class="editor-section full main-layout hidden ">
+        <!-- <img class="bg-picture" src="/img/forme2.png" alt=""> -->
+        <main class="canvas-container">
+            <canvas class="border-radius" width="400" height="400"></canvas>
         </main>
-        <aside>
-            <input class="line-value" type="text" placeholder="type here...." onkeyup="onSetLineText(event)">
+        <aside class="grid align-center border-radius">
 
-            <a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpeg">Download</a>
+            <input class="line-value input-cleaner btn-border" type="text" placeholder="type here...."
+                onkeyup="onSetLineText(event)">
 
-            <label for="fill-color">Fill Color: </label>
-            <input class="fill-color" type="color" id="fill-color" value="#ffffff">
+            <div class="line-ctrl-btns grid grid-auto-column justify-content-center ">
 
-            <label for="outline-color">Outline Color: </label>
-            <input class="outline-color" type="color" id="outline-color" value="#000000">
+                <button class="switch-btn btn-editor btn-border btn clean-btn" onclick="onSwitchLine()">
+                    <img class="btn-img btn-img-switch" src="./icons/switch.png" alt="">
+                </button>
 
-            <button onclick="onSetFontSize('+')"> + </button>
-            <button onclick="onSetFontSize('-')"> - </button>
-            <button onclick="onAddLine()">Add line</button>
-            <button onclick="onSwitchLine()">Switch Line</button>
+                <button class="add-line-btn btn-editor btn-border btn clean-btn" onclick="onAddLine()">
+                    <img class="btn-img btn-img-add" src="./icons/+.svg" alt="">
+                </button>
+
+                <button class="delete-line-btn btn-editor btn-border btn clean-btn" onclick="onDeleteLine()">
+                    <img class="btn-img btn-img-delete" src="./icons/delete.svg" alt="">
+                </button>
+
+                <button class="move-line-btn btn-editor btn-border btn clean-btn" onclick="onMoveLineUp()">
+                    <img class="btn-img btn-img-text-up" src="./icons/line-up.png" alt="">
+                </button>
+
+                <button class="move-line-btn btn-editor btn-border btn clean-btn" onclick="onMoveLineDown()">
+                    <img class="btn-img btn-img-text-down" src="./icons/line-down.png" alt="">
+                </button>
+
+            </div>
+
+            <div class="text-editing-container border-radius">
+
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onSetFontSize('+')">
+                    <img class="btn-img btn-img-text-down" src="./icons/A+.svg" alt="">
+                </button>
+
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onSetFontSize('-')">
+                    <img class="btn-img btn-img-text-down" src="./icons/A-.svg" alt="">
+                </button>
+
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onAlignTextLeft()">
+                    <img class="btn-img btn-img-text-down" src="./icons/align-left.svg" alt="">
+                </button>
+
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onAlignTextCenter()">
+                    <img class="btn-img btn-img-text-down" src="./icons/align-center.svg" alt="">
+                </button>
+
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onAlignTextRight()">
+                    <img class="btn-img btn-img-text-down" src="./icons/align-right.svg" alt="">
+                </button>
+
+                <select class="font-picker btn-font-editor btn-editor btn-border btn">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="openColorPicker(this)">
+                    <img class="btn-img btn-img-fill-color" src="./icons/fill-color.png" alt="">
+                    <input  class="fill-color visibility-hidden" type="color" id="fill-color" value="#ffffff">
+                </button>
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="openColorPicker(this)">
+                    <img class="btn-img btn-img-stroke-color" src="./icons/stroke-color.png" alt="">
+                    <input class="outline-color visibility-hidden" type="color" id="outline-color"value="#000000">
+                </button>
+
+            </div>
+
+            <div class="stickers flex align-center justify-content-center">
+                
+            </div>
+            <div class="share-download-btns flex">
+                <a href="#"
+                    class="flex justify-content-center align-center share-btn btn-border btn clean-ref"
+                    onclick="uploadImg(this)" download="my-img.jpeg">
+                    <img class="btn-img btn-img-download" src="./icons/share.svg" alt="">
+                    <span>Share</span></a>
+
+                <a href="#"
+                    class="flex justify-content-center align-center download-btn  btn-border btn clean-ref"
+                    onclick="downloadImg(this)" download="my-img.jpeg">
+                    <img class="btn-img btn-img-share" src="./icons/download.svg" alt="">
+                    <span>Download</span></a>
+            </div>
         </aside>
     </section>
 

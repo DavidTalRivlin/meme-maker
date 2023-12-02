@@ -10,7 +10,6 @@ function getImgById(imgId) {
 }
 
 /******* private functions ********/
-
 function _createImg(id, keywords) {
     return {
         id,
@@ -18,7 +17,6 @@ function _createImg(id, keywords) {
         keywords: keywords || ['nice', 'funny'],
     }
 }
-
 
 function _createGallery() {
     gImgs = [
