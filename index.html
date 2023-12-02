@@ -19,8 +19,8 @@
             <nav class="main-nav">
                 <ul class="main-nav-list flex clean-list">
                     <li><button class="header-btn clean-btn btn flex justify-content-center align-center active" onclick="window.location.reload(); onNavClicked(this)" ><span class="menu-gr-txt">Gallery</span></button></li>
-                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick="onNavClicked(this) ; toggleMenu() "><span class="menu-gr-txt">Memes</span></button></li>
-                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick="onNavClicked(this) ; toggleMenu() "><span class="menu-gr-txt">About</span></button></li>
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick="onNavClicked(this) ; toggleMenu() "><span class="">Memes</span></button></li>
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick="onNavClicked(this) ; toggleMenu() "><span class="">About</span></button></li>
                 </ul>
             </nav>
         </section>
@@ -54,7 +54,7 @@
 
 
 
-    <section class="editor-section full main-layout hidden ">
+    <section class="editor-section grid hidden ">
         <!-- <img class="bg-picture" src="/img/forme2.png" alt=""> -->
         <main class="canvas-container">
             <canvas class="border-radius" width="400" height="400"></canvas>
@@ -64,7 +64,7 @@
             <input class="line-value input-cleaner btn-border" type="text" placeholder="type here...."
                 onkeyup="onSetLineText(event)">
 
-            <div class="line-ctrl-btns grid grid-auto-column justify-content-center ">
+            <div class="line-ctrl-btns grid grid-auto-column justify-content-space-between ">
 
                 <button class="switch-btn btn-editor btn-border btn clean-btn" onclick="onSwitchLine()">
                     <img class="btn-img btn-img-switch" src="./icons/switch.png" alt="">

@@ -14,7 +14,7 @@ canvas {
 }
 
 aside {
-    margin-block-start: 2em;
+    
     border: 0.3em solid var(--clrPrimery);
     background-color: var(--clrPrimery);
     padding: 1em 1.5em;
@@ -23,6 +23,7 @@ aside {
 
 .editor-section {
     margin-top: 20px;
+    gap: 1em;
 }
 
 .line-value {
@@ -43,8 +44,8 @@ aside {
 
 
 .line-ctrl-btns {
-    margin: 1em;
-    gap: 1em;
+    margin: 1em 0 ;
+  
 }
 
 .text-editing-container {
@@ -56,7 +57,7 @@ aside {
     align-items:center ;
     padding: 1em;
     background-color: var(--clrSecondery8);
-    gap: 1em;
+    gap: 0.5em;
 }
 
 .text-editing-container>* {

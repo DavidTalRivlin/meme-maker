@@ -27,6 +27,15 @@ function onImgSelect(id) {
 
     elGallery.classList.toggle('hidden')
     elEditor.classList.toggle('hidden')
+
+    document.querySelectorAll('.header-btn').forEach((currEl)=> {
+        currEl.classList.remove('active')
+      
+      
+        let currSpan = currEl.querySelector('span')
+        currSpan.classList.remove('menu-gr-txt')
+    })
+
     resizeCanvas()
     renderMeme()
 
@@ -45,7 +54,7 @@ function onNavClicked(el){
     
     document.querySelectorAll('.header-btn').forEach((currEl)=> {
         currEl.classList.remove('active')
-        currEl.classList.add('not-active')
+      
         
 
         let currSpan = currEl.querySelector('span')

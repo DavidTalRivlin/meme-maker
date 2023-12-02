@@ -83,3 +83,7 @@
     width: 90%;
     filter: drop-shadow(0 var(--clrSecondery2))
 }
+
+.line-ctrl-btns > *{
+justify-self: center;
+}

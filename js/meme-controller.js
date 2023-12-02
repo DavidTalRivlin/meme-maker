@@ -82,7 +82,7 @@ function renderText(line, x, y, lineIdx) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.color
     gCtx.fillStyle = line.fill
-    gCtx.font = `${line.size}px Impact`
+    gCtx.font = `${line.size}px ${line.font}`
     gCtx.textAlign = line.textAlign
     gCtx.textBaseline = 'middle'
 

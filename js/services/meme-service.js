@@ -3,8 +3,8 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        { txt: 'I sometimes eat Falafel', size: 30, color: 'red', fill: 'black', textAlign: 'center' },
-        { txt: 'I dont like the 2nd row', size: 30, color: 'white', fill: 'black', textAlign: 'center' }
+        { txt: 'I sometimes eat Falafel', size: 30, color: 'white', fill: 'black', font: 'Impact' },
+        { txt: 'I dont like the 2nd row', size: 30, color: 'white', fill: 'black', font: 'Impact' }
     ]
 }
 
@@ -36,7 +36,7 @@ function setOutlineColor(value) {
 }
 
 function addLine() {
-    gMeme.lines.push({ txt: '3line', size: 30, color: 'red', fill: 'black',},)
+    gMeme.lines.push({ txt: '3line', size: 30, color: 'white', fill: 'black', font: 'Impact' })
 }
 
 function switchLine() {
@@ -45,8 +45,8 @@ function switchLine() {
     } else {
         gMeme.selectedLineIdx = 0
     }
-    
-   
+
+
     renderMeme()
     // setTimeout(highlightLine, 200)
 }
@@ -83,10 +83,10 @@ function highlightLine() {
     gCtx.stroke();
 }
 
-function getTextValue(){
-return gMeme.lines[gMeme.selectedLineIdx].txt
+function getTextValue() {
+    return gMeme.lines[gMeme.selectedLineIdx].txt
 
-    
+
 }
 
 function setTextPos(x, y, lineIdx) {
@@ -109,36 +109,36 @@ function getTextBoundry(lineIdx = gMeme.selectedImgId) {
 
 }
 
-function deleteLine(){
+function deleteLine() {
     if (gMeme.lines.length === 0) return
 
-    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
-function alignTextLeft(){
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = ((getTextBoundry().width)/2) +10  
+function alignTextLeft() {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x = ((getTextBoundry().width) / 2) + 10
 
 }
-function alignTextCenter(){
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width / 2  
+function alignTextCenter() {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width / 2
 
 }
-function alignTextRight(){
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width-((getTextBoundry().width)/2) -10 
+function alignTextRight() {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width - ((getTextBoundry().width) / 2) - 10
 
 }
 
-function getTextPos(){
+function getTextPos() {
     let currLine = gMeme.selectedLineIdx
     return (currLine.lines.pos)
 
 }
 
-function moveLineDown(){
-    gMeme.lines[gMeme.selectedLineIdx].pos.y +=10
+function moveLineDown() {
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += 10
 
 }
 
-function moveLineUp(){
-    gMeme.lines[gMeme.selectedLineIdx].pos.y -=10
+function moveLineUp() {
+    gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10
 }
