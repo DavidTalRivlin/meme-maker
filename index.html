@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="main-header main-layout" onload="onInitMeme()">
+<body class="main-layout" onload="onInitMeme()">
 
-    <header class="main-layout full ">
+    <header class="main-header main-layout full ">
         <section class="grid space-between grid-auto-column align-center">
             <div class="logo">
                 🐑 Meeeeeh Maker
@@ -18,9 +18,9 @@
             <img class="menu-btn btn" src="./icons/menu.png" alt="" onclick="toggleMenu()">
             <nav class="main-nav">
                 <ul class="main-nav-list flex clean-list">
-                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick=" window.location.reload()" >Gallery</button></li>
-                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center">Memes</button></li>
-                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center">About</button></li>
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center active" onclick="window.location.reload(); onNavClicked(this)" ><span class="menu-gr-txt">Gallery</span></button></li>
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick="onNavClicked(this) ; toggleMenu() "><span class="menu-gr-txt">Memes</span></button></li>
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick="onNavClicked(this) ; toggleMenu() "><span class="menu-gr-txt">About</span></button></li>
                 </ul>
             </nav>
         </section>

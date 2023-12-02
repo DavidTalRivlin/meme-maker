@@ -9,16 +9,16 @@ header {
     transition: rotate 0.3s;
 }
 
-.manu-btn:hover {
+.menu-btn:hover {
     filter: brightness(75%);
-}
 
+}
 
 .logo {
     font-size: 30px;
     margin-left: 0.5em;
 }
 
-.rotated{
+.rotated {
     rotate: 90deg;
 }

@@ -2,7 +2,7 @@
 
     header {
         position: relative;
-        /* height: 100px; */
+        height: 4em;
     }
 
     .main-nav {
@@ -13,51 +13,85 @@
         transition: grid-template-rows 1s;
         align-content: end;
         background: var(--clrPrimery);
-        
+
         bottom: 0;
         transform: translateY(100%);
         left: 0;
-        width: 100%;      
+        width: 100%;
+    }
+
+    body.menu-open .main-nav {
+        grid-template-rows: 1fr;
+    }
+
+    .main-nav-list {
+        flex-direction: column;
+        border: none;
+        min-height: 0px;
+        overflow: hidden;
+        height: 100%;
+        justify-content: flex-end;
+    }
+
+    .main-header .main-nav-list button {
+        width: 100%;
+        height: auto;
+        padding: 30px;
+
+    }
+
+    .main-header .main-nav-list button:hover {
+        box-shadow: none;
+        background-image: var(--clrGradiant);
+        color: var(--clrGradiant);
+    }
 }
 
-body.menu-open .main-nav {
-    grid-template-rows: 1fr;
-  }
-
-  .main-nav-list {
-    flex-direction: column;
-    border: none;
-    min-height: 0px;
-    overflow: hidden;
-    height: 100%;
-    justify-content: flex-end;
-  }
-
-  .main-header .main-nav-list button {
-    width: 100%;
-    height: auto;
-    padding: 30px;
-    color: var(--clrSecondery3);
-  }
-
-  .main-header .main-nav-list button:hover {
-    box-shadow: none;
-    background-color: var(--clrHeaderClick);
-    color: #000;
-  }
-}
 /* SMALL */
 
-@media (min-width: 640px) {}
+@media (min-width: 640px) {
+
+    header {
+        height: 6em;
+    }
+
+}
 
 /* MEDIUM */
 
 @media (min-width: 860px) {
 
-.menu-btn{
-    display: none;
+    .menu-btn {
+        display: none;
+    }
+
+    .main-header .main-nav-list button {
+        
+        margin-left: 0.5em;
+        padding: 0.5em 1.5em;
+        border-radius: 1.25em;
+       
+
+    }
+
+
+    .active {
+        box-shadow: 3px 4px 11px 1px rgba(0, 0, 0, 0.35);
+        background-color: var(--clrSecondery3) !important;
+
+    }
+
+
+    .menu-gr-txt {
+        background: var(--clrGradiant);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: rgba(0, 0, 0, 0.2);
+    }
+
+
 }
-}
+
 /* LARGE */
 
 @media (min-width: 1040px) {}

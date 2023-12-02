@@ -40,3 +40,20 @@ function toggleMenu() {
     elbtn.classList.toggle('rotated')
 }
 
+
+function onNavClicked(el){
+    
+    document.querySelectorAll('.header-btn').forEach((currEl)=> {
+        currEl.classList.remove('active')
+        currEl.classList.add('not-active')
+        
+
+        let currSpan = currEl.querySelector('span')
+        currSpan.classList.remove ('.menu-gr-txt')
+
+    })
+
+    el.classList.add ('active')
+    el.querySelector('span').classList.add('menu-gr-txt')
+}
+    
