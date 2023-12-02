@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="main-layout" onload="onInitMeme()">
+<body class="main-header main-layout" onload="onInitMeme()">
 
     <header class="main-layout full ">
         <section class="grid space-between grid-auto-column align-center">
             <div class="logo">
                 🐑 Meeeeeh Maker
             </div>
-            <img class="manu-btn btn" src="./icons/manu.png" alt="" srcset="">
-            <nav>
-                
-                <button class="header-btn clean-btn"> Gallery</button>
-                <button class="header-btn clean-btn"> Memes</button>
-                <button class="header-btn clean-btn"> About</button>
-                
+            <img class="menu-btn btn" src="./icons/menu.png" alt="" onclick="toggleMenu()">
+            <nav class="main-nav">
+                <ul class="main-nav-list flex clean-list">
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center" onclick=" window.location.reload()" >Gallery</button></li>
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center">Memes</button></li>
+                    <li><button class="header-btn clean-btn btn flex justify-content-center align-center">About</button></li>
+                </ul>
             </nav>
         </section>
     </header>
@@ -119,27 +119,25 @@
 
                 <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="openColorPicker(this)">
                     <img class="btn-img btn-img-fill-color" src="./icons/fill-color.png" alt="">
-                    <input  class="fill-color visibility-hidden" type="color" id="fill-color" value="#ffffff">
+                    <input class="fill-color visibility-hidden" type="color" id="fill-color" value="#ffffff">
                 </button>
                 <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="openColorPicker(this)">
                     <img class="btn-img btn-img-stroke-color" src="./icons/stroke-color.png" alt="">
-                    <input class="outline-color visibility-hidden" type="color" id="outline-color"value="#000000">
+                    <input class="outline-color visibility-hidden" type="color" id="outline-color" value="#000000">
                 </button>
 
             </div>
 
             <div class="stickers flex align-center justify-content-center">
-                
+
             </div>
             <div class="share-download-btns flex">
-                <a href="#"
-                    class="flex justify-content-center align-center share-btn btn-border btn clean-ref"
+                <a href="#" class="flex justify-content-center align-center share-btn btn-border btn clean-ref"
                     onclick="uploadImg(this)" download="my-img.jpeg">
                     <img class="btn-img btn-img-download" src="./icons/share.svg" alt="">
                     <span>Share</span></a>
 
-                <a href="#"
-                    class="flex justify-content-center align-center download-btn  btn-border btn clean-ref"
+                <a href="#" class="flex justify-content-center align-center download-btn  btn-border btn clean-ref"
                     onclick="downloadImg(this)" download="my-img.jpeg">
                     <img class="btn-img btn-img-share" src="./icons/download.svg" alt="">
                     <span>Download</span></a>

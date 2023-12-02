@@ -2,10 +2,11 @@ header {
     background-image: var(--clrGradiant);
 }
 
-.manu-btn {
+.menu-btn {
 
-    width: 66px;
-    margin-right: 20px;
+    width: 3em;
+    margin-right: 1em;
+    transition: rotate 0.3s;
 }
 
 .manu-btn:hover {
@@ -15,4 +16,9 @@ header {
 
 .logo {
     font-size: 30px;
+    margin-left: 0.5em;
+}
+
+.rotated{
+    rotate: 90deg;
 }

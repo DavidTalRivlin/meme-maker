@@ -67,6 +67,7 @@ function renderImg(imgId, lines) {
             
             renderText(line, x, y, idx)
             highlightLine()
+
         });
 
     }

@@ -32,3 +32,11 @@ function onImgSelect(id) {
 
 }
 
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open')
+
+    let elbtn = document.querySelector('.menu-btn')
+    elbtn.classList.toggle('rotated')
+}
+
