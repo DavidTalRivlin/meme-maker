@@ -3,8 +3,8 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        { txt: 'I sometimes eat Falafel', size: 30, color: 'white', fill: 'black', font: 'Impact' },
-        { txt: 'I dont like the 2nd row', size: 30, color: 'white', fill: 'black', font: 'Impact' }
+        { txt: 'I think i got this sprint...', size: 30, color: 'white', fill: 'black', font: 'Impact' },
+        { txt: 'wrong', size: 50, color: 'white', fill: 'black', font: 'Impact' }
     ]
 }
 
@@ -39,13 +39,16 @@ function addLine() {
     gMeme.lines.push({ txt: '3line', size: 30, color: 'white', fill: 'black', font: 'Impact' })
 }
 
-function switchLine() {
-    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
-        gMeme.selectedLineIdx++
+function switchLine(idx) {
+    if (idx) {
+        gMeme.selectedImgId = idx
     } else {
-        gMeme.selectedLineIdx = 0
+        if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
+            gMeme.selectedLineIdx++
+        } else {
+            gMeme.selectedLineIdx = 0
+        }
     }
-
 
     renderMeme()
     // setTimeout(highlightLine, 200)
@@ -143,7 +146,7 @@ function moveLineUp() {
     gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10
 }
 
-function setFontFamily(value){
+function setFontFamily(value) {
     gMeme.lines[gMeme.selectedLineIdx].font = value
 }
 

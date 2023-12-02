@@ -33,7 +33,7 @@ function setEventListener() {
         resizeCanvas()
     })
 
-    // gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousedown', onDown)
     // gElCanvas.addEventListener('mousemove', onMove)
     // gElCanvas.addEventListener('mouseup', onUp)
 
@@ -63,10 +63,10 @@ function renderImg(imgId, lines) {
             if (!gIsLineMove) {
                 if (idx === 0) {
                     x = gElCanvas.width / 2
-                    y = 100
+                    y = 30
                 } else if (idx === 1) {
                     x = gElCanvas.width / 2
-                    y = gElCanvas.height - 100
+                    y = gElCanvas.height - 30
                 } else {
                     x = gElCanvas.width / 2
                     y = gElCanvas.height / 2
@@ -212,77 +212,56 @@ function onUploadImg() {
 // still under working:
 
 
-// function onDown(ev) {
-//     // Get the ev pos from mouse or touch
-//     const pos = getEvPos(ev)
-//     let clickedLineIdx
-//     gMeme.lines.forEach((line, idx) => {
-//         clickedLineIdx = isLineClicked(pos, idx)
-//         if (clickedLineIdx) {
-//             gMeme.selectedLineIdx = clickedLineIdx
-//             renderMeme()
-//         }
-//     })
-//     // if (!isLineClicked(pos)) return
+function onDown(ev) {
+    // Get the ev pos from mouse or touch
+    const pos = getEvPos(ev)
+    
+    let clickedlineIdx = gMeme.lines.find((pos, idx)=>{isLineClicked(pos, idx)})
+   
+    switchLine(clickedlineIdx)
+    SetInputVal()
+    renderMeme()
 
-//     // setCircleDrag(true)
-//     //Save the pos we start from
-//     // gStartPos = pos
-//     // document.body.style.cursor = 'grabbing'
-// }
+}
 
-// function isLineClicked(clickedPos, idx) {
-//     // let rect = gElCanvas.getBoundingClientRect();
-//     // console.log('rect', rect)
-//     // console.log('clickedPos', clickedPos)
-//     let mouseX = clickedPos.x;
-//     // let mouseX = clickedPos.x - rect.left;
-//     let mouseY = clickedPos.y;
-//     // let mouseY = clickedPos.y - rect.top;
-//     let x = gMeme.lines[idx].pos.x
-//     let y = gMeme.lines[idx].pos.y
+function isLineClicked(clickedPos, idx) {
+console.log('variable')
+    let x = gMeme.lines[idx].pos.x
+    let y = gMeme.lines[idx].pos.y
 
-//     let width = gMeme.lines[idx].width
-//     let height = gMeme.lines[idx].size
-
-//     console.log('mouseX', mouseX)
-//     console.log('mouseY', mouseY)
-//     console.log('x', x)
-//     console.log('y', y)
+    let mouseX = clickedPos.x;
+    let mouseY = clickedPos.y;
+    let widthAddon = gCtx.measureText(gMeme.lines[idx].txt).width / 2
+    let heightAddon = gMeme.lines[idx].size / 2
 
 
-//     if (
-//         mouseX >= x
-//         &&
-//         mouseX <= x + width) {
-//         console.log('inside line')
-//     }
-//     //  &&
-//     // mouseY >= y - height/2 &&
-//     // mouseY <= height/2) {
-
-//     return idx;
-//     // }
-// }
+    if (mouseX <= x + widthAddon &&
+        mouseX >= x - widthAddon &&
+        mouseY <= y + heightAddon &&
+        mouseY >= y - heightAddon) {
+        console.log('OKAY')
+        return idx;
+    }
+}
 
 
-// function getEvPos(ev) {
+function getEvPos(ev) {
 
-//     let pos = {
-//         x: ev.offsetX,
-//         y: ev.offsetY,
-//     }
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
 
-//     // if (TOUCH_EVS.includes(ev.type)) {
-//     //     // Prevent triggering the mouse ev
-//     //     ev.preventDefault()
-//     //     // Gets the first touch point
-//     //     ev = ev.changedTouches[0]
-//     //     // Calc the right pos according to the touch screen
-//     //     pos = {
-//     //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-//     //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-//     //     }
-//     // }
-//     return pos
-// }
+    // if (TOUCH_EVS.includes(ev.type)) {
+    //     // Prevent triggering the mouse ev
+    //     ev.preventDefault()
+    //     // Gets the first touch point
+    //     ev = ev.changedTouches[0]
+    //     // Calc the right pos according to the touch screen
+    //     pos = {
+    //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+    //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    //     }
+    // }
+    return pos
+}

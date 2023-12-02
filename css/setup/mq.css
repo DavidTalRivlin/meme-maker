@@ -50,6 +50,10 @@
         max-width: 800px;
 
     }
+
+    .sheep-img{
+        width: 2.8em;
+    }
 }
 
 /* SMALL */
@@ -59,9 +63,12 @@
     header {
         height: 6em;
     }
+    
+    .sheep-img{
+        width: 4.2em;
 
 }
-
+}
 /* MEDIUM */
 
 @media (min-width: 860px) {
@@ -113,6 +120,8 @@
     aside{
         max-width: 550px;
     }
+
+    
 }
 
 /* LARGE */
