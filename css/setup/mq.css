@@ -91,12 +91,20 @@
     }
 
     .editor-section {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1em;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        gap: 4em;
         align-items: center;
-        margin-left: 1em;
-        margin-right: 1em;
+        justify-content: center;
     }
+
+     .editor-section > :nth-child(even) {
+        justify-self: left;
+    } 
+
+     .editor-section > :nth-child(odd) {
+        justify-self: right;
+    } 
 
     .canvas-container {
         max-width: 550px;

@@ -26,7 +26,6 @@ function onImgSelect(imgId) {
 
     elGallery.classList.toggle('hidden')
     elEditor.classList.toggle('hidden')
-    elEditor.classList.toggle('grid')
 
     document.querySelectorAll('.header-btn').forEach((currEl)=> {
         currEl.classList.remove('active')

@@ -55,7 +55,6 @@
 
 
     <section class="editor-section hidden">
-        <!-- <img class="bg-picture" src="/img/forme2.png" alt=""> -->
         <main class="canvas-container">
             <canvas class="border-radius" width="400" height="400"></canvas>
         </main>
@@ -110,11 +109,11 @@
                     <img class="btn-img btn-img-text-down" src="./icons/align-right.svg" alt="">
                 </button>
 
-                <select class="font-picker btn-font-editor btn-editor btn-border btn">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                <select class="font-picker btn-font-editor btn-editor btn-border btn" onchange="onSetFontFamily(event)">
+                    <option value="Impact">Impact</option>
+                    <option value="Ariel">Ariel</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Verdana">Verdana</option>
                 </select>
 
                 <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="openColorPicker(this)">
@@ -133,7 +132,7 @@
             </div>
             <div class="share-download-btns flex">
                 <a href="#" class="flex justify-content-center align-center share-btn btn-border btn clean-ref"
-                    onclick="uploadImg(this)" download="my-img.jpeg">
+                    onclick="onUploadImg(this)">
                     <img class="btn-img btn-img-download" src="./icons/share.svg" alt="">
                     <span>Share</span></a>
 

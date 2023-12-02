@@ -8,7 +8,6 @@ function onInitMeme() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     SetInputVal()
-    // renderMeme()
     setEventListener()
 
 }
@@ -34,6 +33,18 @@ function setEventListener() {
         resizeCanvas()
     })
 
+    // gElCanvas.addEventListener('mousedown', onDown)
+    // gElCanvas.addEventListener('mousemove', onMove)
+    // gElCanvas.addEventListener('mouseup', onUp)
+
+    // gElCanvas.addEventListener('touchstart', onDown)
+    // gElCanvas.addEventListener('touchmove', onMove)
+    // gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onSetFontFamily(ev) {
+    setFontFamily(ev.target.value)
+    renderMeme()
 }
 
 function renderImg(imgId, lines) {
@@ -64,8 +75,8 @@ function renderImg(imgId, lines) {
                 x = gMeme.lines[idx].pos.x
                 y = gMeme.lines[idx].pos.y
             }
-            
-            
+
+
             renderText(line, x, y, idx)
             highlightLine()
 
@@ -172,15 +183,106 @@ function onAlignTextRight() {
     renderMeme()
 }
 
-function onMoveLineDown(){
+function onMoveLineDown() {
     gIsLineMove = true
     moveLineDown()
     renderMeme()
 }
 
-function onMoveLineUp(){
+function onMoveLineUp() {
     gIsLineMove = true
     moveLineUp()
     renderMeme()
-    
 }
+
+function onUploadImg() {
+    // Gets the image from the canvas
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
+
+    function onSuccess(uploadedImgUrl) {
+        // Handle some special characters
+        const url = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
+    }
+
+    // Send the image to the server
+    doUploadImg(imgDataUrl, onSuccess)
+}
+
+// still under working:
+
+
+// function onDown(ev) {
+//     // Get the ev pos from mouse or touch
+//     const pos = getEvPos(ev)
+//     let clickedLineIdx
+//     gMeme.lines.forEach((line, idx) => {
+//         clickedLineIdx = isLineClicked(pos, idx)
+//         if (clickedLineIdx) {
+//             gMeme.selectedLineIdx = clickedLineIdx
+//             renderMeme()
+//         }
+//     })
+//     // if (!isLineClicked(pos)) return
+
+//     // setCircleDrag(true)
+//     //Save the pos we start from
+//     // gStartPos = pos
+//     // document.body.style.cursor = 'grabbing'
+// }
+
+// function isLineClicked(clickedPos, idx) {
+//     // let rect = gElCanvas.getBoundingClientRect();
+//     // console.log('rect', rect)
+//     // console.log('clickedPos', clickedPos)
+//     let mouseX = clickedPos.x;
+//     // let mouseX = clickedPos.x - rect.left;
+//     let mouseY = clickedPos.y;
+//     // let mouseY = clickedPos.y - rect.top;
+//     let x = gMeme.lines[idx].pos.x
+//     let y = gMeme.lines[idx].pos.y
+
+//     let width = gMeme.lines[idx].width
+//     let height = gMeme.lines[idx].size
+
+//     console.log('mouseX', mouseX)
+//     console.log('mouseY', mouseY)
+//     console.log('x', x)
+//     console.log('y', y)
+
+
+//     if (
+//         mouseX >= x
+//         &&
+//         mouseX <= x + width) {
+//         console.log('inside line')
+//     }
+//     //  &&
+//     // mouseY >= y - height/2 &&
+//     // mouseY <= height/2) {
+
+//     return idx;
+//     // }
+// }
+
+
+// function getEvPos(ev) {
+
+//     let pos = {
+//         x: ev.offsetX,
+//         y: ev.offsetY,
+//     }
+
+//     // if (TOUCH_EVS.includes(ev.type)) {
+//     //     // Prevent triggering the mouse ev
+//     //     ev.preventDefault()
+//     //     // Gets the first touch point
+//     //     ev = ev.changedTouches[0]
+//     //     // Calc the right pos according to the touch screen
+//     //     pos = {
+//     //         x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+//     //         y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+//     //     }
+//     // }
+//     return pos
+// }
