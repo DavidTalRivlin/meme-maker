@@ -19,6 +19,7 @@
 .input-cleaner {
     background: transparent;
     border: none;
+    outline: none;
     font-family: unset;
 }
 

@@ -1,6 +1,6 @@
 'use stirct'
 let gElCanvas
-
+gIsLineMove = false
 
 
 function onInitMeme() {
@@ -8,7 +8,7 @@ function onInitMeme() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     SetInputVal()
-    renderMeme()
+    // renderMeme()
     setEventListener()
 
 }
@@ -49,7 +49,7 @@ function renderImg(imgId, lines) {
         lines.forEach((line, idx) => {
             let x
             let y
-            if (!gMeme.lines[idx].pos) {
+            if (!gIsLineMove) {
                 if (idx === 0) {
                     x = gElCanvas.width / 2
                     y = 100
@@ -60,16 +60,17 @@ function renderImg(imgId, lines) {
                     x = gElCanvas.width / 2
                     y = gElCanvas.height / 2
                 }
-            }else {
+            } else {
                 x = gMeme.lines[idx].pos.x
                 y = gMeme.lines[idx].pos.y
             }
+            
             
             renderText(line, x, y, idx)
             highlightLine()
 
         });
-
+        gIsLineMove = false
     }
 }
 
@@ -83,7 +84,7 @@ function renderText(line, x, y, lineIdx) {
     gCtx.strokeStyle = line.color
     gCtx.fillStyle = line.fill
     gCtx.font = `${line.size}px ${line.font}`
-    gCtx.textAlign = line.textAlign
+    gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
 
     gCtx.fillText(line.txt, x, y)
@@ -135,10 +136,10 @@ function SetInputVal() {
 }
 
 function resizeCanvas() {
+    gIsLineMove = false
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight //saved for diffret aspet ratio
-    // gElCanvas.height = elContainer.offsetWidth
     renderMeme()
 }
 
@@ -152,28 +153,34 @@ function openColorPicker(elBtn) {
     elInput.click()
 }
 
-
 function onAlignTextLeft() {
+    gIsLineMove = true
     alignTextLeft()
     renderMeme()
 
 }
+
 function onAlignTextCenter() {
+    gIsLineMove = true
     alignTextCenter()
     renderMeme()
 }
+
 function onAlignTextRight() {
+    gIsLineMove = true
     alignTextRight()
     renderMeme()
 }
 
-
 function onMoveLineDown(){
+    gIsLineMove = true
     moveLineDown()
     renderMeme()
 }
 
 function onMoveLineUp(){
+    gIsLineMove = true
     moveLineUp()
     renderMeme()
+    
 }

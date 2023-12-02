@@ -104,7 +104,7 @@ function setTextBoundry(lineIdx) {
     }
 }
 
-function getTextBoundry(lineIdx = gMeme.selectedImgId) {
+function getTextBoundry(lineIdx = gMeme.selectedLineIdx) {
     return gCtx.measureText(gMeme.lines[lineIdx].txt)
 
 }
@@ -117,12 +117,13 @@ function deleteLine() {
 
 function alignTextLeft() {
     gMeme.lines[gMeme.selectedLineIdx].pos.x = ((getTextBoundry().width) / 2) + 10
-
 }
+
 function alignTextCenter() {
     gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width / 2
 
 }
+
 function alignTextRight() {
     gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width - ((getTextBoundry().width) / 2) - 10
 

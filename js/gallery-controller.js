@@ -18,17 +18,15 @@ function renderGallery() {
     elGallery.innerHTML = strHtml
 }
 
-function onImgSelect(id) {
-
-    
-    setImg(id)
+function onImgSelect(imgId) {
+ 
+    setImg(imgId)
     var elGallery = document.querySelector('.gallary-conatiner')
     var elEditor = document.querySelector('.editor-section')
 
     elGallery.classList.toggle('hidden')
     elEditor.classList.toggle('hidden')
     elEditor.classList.toggle('grid')
-
 
     document.querySelectorAll('.header-btn').forEach((currEl)=> {
         currEl.classList.remove('active')
@@ -38,11 +36,9 @@ function onImgSelect(id) {
         currSpan.classList.remove('menu-gr-txt')
     })
 
-    resizeCanvas()
     renderMeme()
 
 }
-
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
@@ -50,7 +46,6 @@ function toggleMenu() {
     let elbtn = document.querySelector('.menu-btn')
     elbtn.classList.toggle('rotated')
 }
-
 
 function onNavClicked(el){
     
