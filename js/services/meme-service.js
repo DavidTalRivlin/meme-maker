@@ -41,7 +41,7 @@ function addLine() {
 
 function switchLine(idx) {
     if (idx) {
-        gMeme.selectedImgId = idx
+        gMeme.selectedLineIdx = idx
     } else {
         if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
             gMeme.selectedLineIdx++
@@ -51,7 +51,6 @@ function switchLine(idx) {
     }
 
     renderMeme()
-    // setTimeout(highlightLine, 200)
 }
 
 function highlightLine() {
@@ -97,7 +96,6 @@ function setTextPos(x, y, lineIdx) {
 }
 
 function setTextBoundry(lineIdx) {
-    // var box = getTextBoundry(lineIdx)
     var { actualBoundingBoxRight, actualBoundingBoxLeft, actualBoundingBoxAscent, actualBoundingBoxDescent } = getTextBoundry(lineIdx)
     gMeme.lines[lineIdx]['boundry'] = {
         xLeft: actualBoundingBoxLeft,

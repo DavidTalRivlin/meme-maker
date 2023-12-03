@@ -214,33 +214,43 @@ function onUploadImg() {
 
 function onDown(ev) {
     // Get the ev pos from mouse or touch
-    const pos = getEvPos(ev)
+    const clickedPos = getEvPos(ev)
     
-    let clickedlineIdx = gMeme.lines.find((pos, idx)=>{isLineClicked(pos, idx)})
-   
+    let clickedlineIdx = gMeme.lines.findIndex((line,idx)=>isLineClicked(clickedPos,line,idx))
+   console.log(clickedlineIdx)
+   if (clickedlineIdx !== -1) {
     switchLine(clickedlineIdx)
     SetInputVal()
     renderMeme()
-
+   }
 }
 
-function isLineClicked(clickedPos, idx) {
-console.log('variable')
-    let x = gMeme.lines[idx].pos.x
-    let y = gMeme.lines[idx].pos.y
-
+function isLineClicked(clickedPos,line,idx) {
+    // console.log('clickedPos', clickedPos)
+    
+    let x = line.pos.x
+    let y = line.pos.y
     let mouseX = clickedPos.x;
     let mouseY = clickedPos.y;
-    let widthAddon = gCtx.measureText(gMeme.lines[idx].txt).width / 2
-    let heightAddon = gMeme.lines[idx].size / 2
+    let widthAddon = gCtx.measureText(line.txt).width / 2
+    let heightAddon = line.size / 2
 
+
+    // console.log('x', x)
+    // console.log('y', y)
+    // console.log('mouseX', mouseX)
+    // console.log('mouseY', mouseY)
+    // console.log('widthAddon', widthAddon)
+    // console.log('heightAddon', heightAddon)
 
     if (mouseX <= x + widthAddon &&
         mouseX >= x - widthAddon &&
         mouseY <= y + heightAddon &&
         mouseY >= y - heightAddon) {
         console.log('OKAY')
-        return idx;
+        return true
+    }else{
+        return false
     }
 }
 
