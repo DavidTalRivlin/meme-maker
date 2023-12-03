@@ -1,8 +1,7 @@
 'use stirct'
 let gElCanvas
-gIsLineMove = false
-
-
+let gStartPos
+let gIsLineMove
 function onInitMeme() {
     onInitGallery()
     gElCanvas = document.querySelector('canvas')
@@ -34,8 +33,8 @@ function setEventListener() {
     })
 
     gElCanvas.addEventListener('mousedown', onDown)
-    // gElCanvas.addEventListener('mousemove', onMove)
-    // gElCanvas.addEventListener('mouseup', onUp)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
 
     // gElCanvas.addEventListener('touchstart', onDown)
     // gElCanvas.addEventListener('touchmove', onMove)
@@ -135,9 +134,9 @@ function onAddLine() {
     renderMeme()
 }
 
-function onSwitchLine() {
+function onSwitchLine(idx) {
 
-    switchLine()
+    switchLine(idx)
     SetInputVal()
 }
 
@@ -214,20 +213,54 @@ function onUploadImg() {
 
 function onDown(ev) {
     // Get the ev pos from mouse or touch
-    const clickedPos = getEvPos(ev)
-    
-    let clickedlineIdx = gMeme.lines.findIndex((line,idx)=>isLineClicked(clickedPos,line,idx))
-   console.log(clickedlineIdx)
-   if (clickedlineIdx !== -1) {
-    switchLine(clickedlineIdx)
-    SetInputVal()
+    const pos = getEvPos(ev)
+
+    let clickedlineIdx = gMeme.lines.findIndex((line) => isLineClicked(pos, line))
+
+    if (clickedlineIdx === -1) return
+    // console.log('clickedlineIdx', clickedlineIdx)
+
+    onSwitchLine(clickedlineIdx)
     renderMeme()
-   }
+    setLineDrag(true)
+
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+
 }
 
-function isLineClicked(clickedPos,line,idx) {
-    // console.log('clickedPos', clickedPos)
-    
+function onMove(ev) {
+    const meme = getMeme()
+
+    const { isDrag } = meme.lines[meme.selectedLineIdx]
+    if (!isDrag) return
+    // console.log('Moving the line')
+
+    const pos = getEvPos(ev)
+    console.log('pos', pos)
+    // Calc the delta, the diff we moved
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+
+    console.log('dx', dx)
+    console.log('dy', dy)
+    moveLine(dx, dy)
+    // Save the last pos, we remember where we`ve been and move accordingly
+    gStartPos = meme.lines[meme.selectedLineIdx].pos
+    // The canvas is render again after every move
+    renderMeme()
+}
+
+function onUp() {
+    // console.log('onUp')
+    setLineDrag(false)
+    document.body.style.cursor = 'grab'
+    renderMeme()
+}
+
+
+function isLineClicked(clickedPos, line) {
+
     let x = line.pos.x
     let y = line.pos.y
     let mouseX = clickedPos.x;
@@ -236,20 +269,13 @@ function isLineClicked(clickedPos,line,idx) {
     let heightAddon = line.size / 2
 
 
-    // console.log('x', x)
-    // console.log('y', y)
-    // console.log('mouseX', mouseX)
-    // console.log('mouseY', mouseY)
-    // console.log('widthAddon', widthAddon)
-    // console.log('heightAddon', heightAddon)
-
     if (mouseX <= x + widthAddon &&
         mouseX >= x - widthAddon &&
         mouseY <= y + heightAddon &&
         mouseY >= y - heightAddon) {
-        console.log('OKAY')
+        // console.log('OKAY')
         return true
-    }else{
+    } else {
         return false
     }
 }

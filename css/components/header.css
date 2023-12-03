@@ -22,3 +22,8 @@ header {
 .rotated {
     rotate: 90deg;
 }
+
+
+.logo > *{
+   vertical-align: middle;
+}

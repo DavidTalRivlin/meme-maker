@@ -3,8 +3,8 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        { txt: 'I think i got this sprint...', size: 30, color: 'white', fill: 'black', font: 'Impact' },
-        { txt: 'wrong', size: 50, color: 'white', fill: 'black', font: 'Impact' }
+        { txt: 'I think i got this sprint...', size: 30, color: 'white', fill: 'black', font: 'Impact', isDrag : false},
+        { txt: 'wrong', size: 50, color: 'white', fill: 'black', font: 'Impact' ,isDrag : false}
     ]
 }
 
@@ -36,7 +36,7 @@ function setOutlineColor(value) {
 }
 
 function addLine() {
-    gMeme.lines.push({ txt: '3line', size: 30, color: 'white', fill: 'black', font: 'Impact' })
+    gMeme.lines.push({ txt: 'You have too much to say!', size: 30, color: 'white', fill: 'black', font: 'Impact' ,isDrag : false})
 }
 
 function switchLine(idx) {
@@ -149,7 +149,6 @@ function setFontFamily(value) {
 }
 
 
-
 function doUploadImg(imgDataUrl, onSuccess) {
     // Pack the image for delivery
     const formData = new FormData()
@@ -176,4 +175,14 @@ function doUploadImg(imgDataUrl, onSuccess) {
     }
     XHR.open('POST', '//ca-upload.com/here/upload.php')
     XHR.send(formData)
+}
+
+
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+}
+
+function moveLine(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
 }

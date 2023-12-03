@@ -67,22 +67,22 @@
             <div class="line-ctrl-btns grid grid-auto-column justify-content-space-between ">
 
                 <button class="switch-btn btn-editor btn-border btn clean-btn" onclick="onSwitchLine()">
-                    <img class="btn-img btn-img-switch" src="./icons/switch.png" alt="">
+                    <img class="btn-img btn-img-switch" src="./icons/switch.png" title="Switch line" alt="">
                 </button>
 
-                <button class="add-line-btn btn-editor btn-border btn clean-btn" onclick="onAddLine()">
+                <button class="add-line-btn btn-editor btn-border btn clean-btn" title="Add line" onclick="onAddLine()">
                     <img class="btn-img btn-img-add" src="./icons/+.svg" alt="">
                 </button>
 
-                <button class="delete-line-btn btn-editor btn-border btn clean-btn" onclick="onDeleteLine()">
+                <button class="delete-line-btn btn-editor btn-border btn clean-btn" title="Delete line" onclick="onDeleteLine()">
                     <img class="btn-img btn-img-delete" src="./icons/delete.svg" alt="">
                 </button>
 
-                <button class="move-line-btn btn-editor btn-border btn clean-btn" onclick="onMoveLineUp()">
+                <button class="move-line-btn btn-editor btn-border btn clean-btn" title="Move line up" onclick="onMoveLineUp()">
                     <img class="btn-img btn-img-text-up" src="./icons/line-up.png" alt="">
                 </button>
 
-                <button class="move-line-btn btn-editor btn-border btn clean-btn" onclick="onMoveLineDown()">
+                <button class="move-line-btn btn-editor btn-border btn clean-btn" title="Move line down"onclick="onMoveLineDown()">
                     <img class="btn-img btn-img-text-down" src="./icons/line-down.png" alt="">
                 </button>
 
@@ -90,38 +90,38 @@
 
             <div class="text-editing-container border-radius">
 
-                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onSetFontSize('+')">
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" title="Increase font size" onclick="onSetFontSize('+')">
                     <img class="btn-img btn-img-text-down" src="./icons/A+.svg" alt="">
                 </button>
 
-                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onSetFontSize('-')">
-                    <img class="btn-img btn-img-text-down" src="./icons/A-.svg" alt="">
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" title="Decrease font size" onclick="onSetFontSize('-')">
+                    <img class="btn-img btn-img-text-down" src="./icons/A-.svg"  alt="">
                 </button>
 
-                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onAlignTextLeft()">
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" title="Align left" onclick="onAlignTextLeft()">
                     <img class="btn-img btn-img-text-down" src="./icons/align-left.svg" alt="">
                 </button>
 
-                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onAlignTextCenter()">
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" title="Align center" onclick="onAlignTextCenter()">
                     <img class="btn-img btn-img-text-down" src="./icons/align-center.svg" alt="">
                 </button>
 
-                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="onAlignTextRight()">
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" title="Align right" onclick="onAlignTextRight()">
                     <img class="btn-img btn-img-text-down" src="./icons/align-right.svg" alt="">
                 </button>
 
-                <select class="font-picker btn-font-editor btn-editor btn-border btn" onchange="onSetFontFamily(event)">
+                <select class="font-picker btn-font-editor btn-editor btn-border btn" title="Change font" onchange="onSetFontFamily(event)">
                     <option value="Impact">Impact</option>
                     <option value="Ariel">Ariel</option>
                     <option value="Tahoma">Tahoma</option>
                     <option value="Verdana">Verdana</option>
                 </select>
 
-                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="openColorPicker(this)">
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" title="Text fill color" onclick="openColorPicker(this)">
                     <img class="btn-img btn-img-fill-color" src="./icons/pallet2.png" alt="">
                     <input class="fill-color visibility-hidden" type="color" id="fill-color" value="#ffffff">
                 </button>
-                <button class="btn-font-editor btn-editor btn-border btn clean-btn" onclick="openColorPicker(this)">
+                <button class="btn-font-editor btn-editor btn-border btn clean-btn" title="Text stroke color" onclick="openColorPicker(this)">
                     <img class="btn-img btn-img-stroke-color" src="./icons/pallet1.png" alt="">
                     <input class="outline-color visibility-hidden" type="color" id="outline-color" value="#000000">
                 </button>
