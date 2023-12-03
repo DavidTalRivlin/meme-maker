@@ -75,7 +75,7 @@
 .btn-img-fill-color{
     margin-top: 0.2em;
     width: 90%;
-    
+    filter: drop-shadow(0 var(--clrSecondery2))
 }
 
 .btn-img-stroke-color{
