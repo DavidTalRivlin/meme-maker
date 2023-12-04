@@ -128,6 +128,7 @@ function onSetFontSize(value) {
 function onAddLine() {
     addLine()
     renderMeme()
+    switchLine(getMeme().lines.length-1)
 }
 
 function onSwitchLine(idx) {
