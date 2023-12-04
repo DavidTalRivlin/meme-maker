@@ -3,8 +3,8 @@ var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [
-        { txt: 'I think i got this sprint...', size: 30, color: 'white', fill: 'black', font: 'Impact', isDrag : false},
-        { txt: 'wrong', size: 50, color: 'white', fill: 'black', font: 'Impact' ,isDrag : false}
+        { txt: 'I think I\'ve got this sprint...', size: 30, color: 'white', fill: 'black', font: 'Impact', isDrag: false },
+        { txt: 'wrong', size: 50, color: 'white', fill: 'black', font: 'Impact', isDrag: false },
     ]
 }
 
@@ -15,7 +15,7 @@ function getMeme() {
 }
 
 function setLineText(txt) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = txt
+    getSelectedLine().txt = txt
 }
 
 function setImg(imgId) {
@@ -23,24 +23,34 @@ function setImg(imgId) {
 }
 
 function setFontSize(value) {
-    (value === '+') ? gMeme.lines[gMeme.selectedLineIdx].size++ : gMeme.lines[gMeme.selectedLineIdx].size--
+    var currLine = getSelectedLine();
+
+    (value === '+') ? currLine.size++ : currLine.size--
 }
 
 function setFillColor(value) {
 
-    gMeme.lines[gMeme.selectedLineIdx].fill = value
+    getSelectedLine().fill = value
 }
 
 function setOutlineColor(value) {
-    gMeme.lines[gMeme.selectedLineIdx].color = value
+    getSelectedLine().color = value
+}
+
+function getSelectedLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function setDragToLines(isDrag){
+    gMeme.lines.forEach((line)=>line.isDrag=isDrag)
 }
 
 function addLine() {
-    gMeme.lines.push({ txt: 'You have too much to say!', size: 30, color: 'white', fill: 'black', font: 'Impact' ,isDrag : false})
+    gMeme.lines.push({ txt: 'You have too much to say!', size: 30, color: 'white', fill: 'black', font: 'Impact', isDrag: false })
 }
 
 function switchLine(idx) {
-    if (idx) {
+    if (idx>=0) {
         gMeme.selectedLineIdx = idx
     } else {
         if (gMeme.selectedLineIdx < gMeme.lines.length - 1) {
@@ -53,80 +63,45 @@ function switchLine(idx) {
     renderMeme()
 }
 
-function highlightLine() {
-
-
-    var currLine = gMeme.lines[gMeme.selectedLineIdx]
-
-    gCtx.beginPath();
-
-    var x = currLine.pos.x
-    var y = currLine.pos.y
-
-    gCtx.moveTo(
-        x - currLine.boundry.xLeft - 5,
-        y - currLine.boundry.yTop - 5
-    );
-    gCtx.lineTo(
-        x + currLine.boundry.xRight + 5,
-        y - currLine.boundry.yTop - 5
-    );
-    gCtx.lineTo(
-        x + currLine.boundry.xRight + 5,
-        y + currLine.boundry.yBottom + 5
-    );
-    gCtx.lineTo(
-        x - currLine.boundry.xLeft - 5,
-        y + currLine.boundry.yBottom + 5
-    );
-    gCtx.strokeStyle = 'white'
-    gCtx.lineWidth = 1
-    gCtx.closePath();
-    gCtx.stroke();
+function getTextBoundry(){
+    return gCtx.measureText(getSelectedLine().txt) 
 }
 
-function getTextValue() {
-    return gMeme.lines[gMeme.selectedLineIdx].txt
+function highlightLine() {
+    let {pos,size} = getSelectedLine()
+    let {width} = getTextBoundry()
+     
+    let xStart = pos.x-(width/2)
+    let yStart = pos.y-(size/2)
 
-
+    gCtx.lineWidth = 1
+    gCtx.strokeStyle = 'black'
+    gCtx.beginPath()
+    gCtx.rect(xStart,yStart,width,size)
+    gCtx.stroke()
 }
 
 function setTextPos(x, y, lineIdx) {
     gMeme.lines[lineIdx]['pos'] = { x, y }
 }
 
-function setTextBoundry(lineIdx) {
-    var { actualBoundingBoxRight, actualBoundingBoxLeft, actualBoundingBoxAscent, actualBoundingBoxDescent } = getTextBoundry(lineIdx)
-    gMeme.lines[lineIdx]['boundry'] = {
-        xLeft: actualBoundingBoxLeft,
-        xRight: actualBoundingBoxRight,
-        yTop: actualBoundingBoxDescent,
-        yBottom: actualBoundingBoxAscent
-    }
-}
-
-function getTextBoundry(lineIdx = gMeme.selectedLineIdx) {
-    return gCtx.measureText(gMeme.lines[lineIdx].txt)
-
-}
-
 function deleteLine() {
     if (gMeme.lines.length === 0) return
-
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    switchLine()
 }
 
 function alignTextLeft() {
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = ((getTextBoundry().width) / 2) + 10
+    getSelectedLine().pos.x = ((getTextBoundry().width) / 2) + 10
 }
 
 function alignTextCenter() {
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width / 2
+    getSelectedLine().pos.x = gElCanvas.width / 2
 
 }
 
 function alignTextRight() {
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = gElCanvas.width - ((getTextBoundry().width) / 2) - 10
+    getSelectedLine().pos.x = gElCanvas.width - ((getTextBoundry().width) / 2) - 10
 
 }
 
@@ -137,17 +112,16 @@ function getTextPos() {
 }
 
 function moveLineDown() {
-    gMeme.lines[gMeme.selectedLineIdx].pos.y += 10
+    getSelectedLine().pos.y += 10
 }
 
 function moveLineUp() {
-    gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10
+    getSelectedLine().pos.y -= 10
 }
 
 function setFontFamily(value) {
-    gMeme.lines[gMeme.selectedLineIdx].font = value
+    getSelectedLine().font = value
 }
-
 
 function doUploadImg(imgDataUrl, onSuccess) {
     // Pack the image for delivery
@@ -167,7 +141,6 @@ function doUploadImg(imgDataUrl, onSuccess) {
 
         // If the response is ok, call the onSuccess callback function, 
         // that will create the link to facebook using the url we got
-        console.log('Got back live url:', url)
         onSuccess(url)
     }
     XHR.onerror = (req, ev) => {
@@ -177,12 +150,12 @@ function doUploadImg(imgDataUrl, onSuccess) {
     XHR.send(formData)
 }
 
-
 function setLineDrag(isDrag) {
-    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+    getSelectedLine().isDrag = isDrag
 }
 
 function moveLine(dx, dy) {
-    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
-    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+    let currLine = getSelectedLine()
+    currLine.pos.x += dx
+    currLine.pos.y += dy
 }

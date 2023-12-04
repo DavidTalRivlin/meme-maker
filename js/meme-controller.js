@@ -1,12 +1,12 @@
 'use stirct'
 let gElCanvas
 let gStartPos
-let gIsLineMove
+gIsMouseDrag = false
 function onInitMeme() {
-    onInitGallery()
+
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    SetInputVal()
+    setInputVal()
     setEventListener()
 
 }
@@ -14,7 +14,6 @@ function onInitMeme() {
 function renderMeme() {
     const { selectedImgId, lines } = getMeme()
     renderImg(selectedImgId, lines)
-
 }
 
 function setEventListener() {
@@ -55,11 +54,12 @@ function renderImg(imgId, lines) {
     // When the image ready draw it on the canvas
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+
         if (!lines.length) return
         lines.forEach((line, idx) => {
             let x
             let y
-            if (!gIsLineMove) {
+            if (line.isDrag || !line.pos) {
                 if (idx === 0) {
                     x = gElCanvas.width / 2
                     y = 30
@@ -71,17 +71,17 @@ function renderImg(imgId, lines) {
                     y = gElCanvas.height / 2
                 }
             } else {
-                x = gMeme.lines[idx].pos.x
-                y = gMeme.lines[idx].pos.y
+                x = line.pos.x
+                y = line.pos.y
             }
 
-
+            setTextPos(x, y, idx)
             renderText(line, x, y, idx)
-            highlightLine()
-
         });
-        gIsLineMove = false
+        highlightLine()
+        setDragToLines(false)
     }
+
 }
 
 function downloadImg(elLink) {
@@ -89,7 +89,7 @@ function downloadImg(elLink) {
     elLink.href = imgContent
 }
 
-function renderText(line, x, y, lineIdx) {
+function renderText(line, x, y) {
     gCtx.lineWidth = 1
     gCtx.strokeStyle = line.color
     gCtx.fillStyle = line.fill
@@ -99,12 +99,6 @@ function renderText(line, x, y, lineIdx) {
 
     gCtx.fillText(line.txt, x, y)
     gCtx.strokeText(line.txt, x, y)
-
-    setTextPos(x, y, lineIdx)
-    setTextBoundry(lineIdx)
-
-
-
 }
 
 function onSetLineText(ev) {
@@ -135,22 +129,23 @@ function onAddLine() {
 }
 
 function onSwitchLine(idx) {
-
     switchLine(idx)
-    SetInputVal()
+    setInputVal()
 }
 
-function SetInputVal() {
+function setInputVal() {
     var elText = document.querySelector('.line-value')
-    elText.value = getTextValue()
+    elText.value = getSelectedLine().txt
 }
 
 function resizeCanvas() {
-    gIsLineMove = false
+    setDragToLines(true)
     const elContainer = document.querySelector('.canvas-container')
     gElCanvas.width = elContainer.offsetWidth
     gElCanvas.height = elContainer.offsetHeight //saved for diffret aspet ratio
     renderMeme()
+
+
 }
 
 function onDeleteLine() {
@@ -164,33 +159,38 @@ function openColorPicker(elBtn) {
 }
 
 function onAlignTextLeft() {
-    gIsLineMove = true
+    getSelectedLine().isDrag = true
     alignTextLeft()
+    getSelectedLine().isDrag = false
     renderMeme()
 
 }
 
 function onAlignTextCenter() {
-    gIsLineMove = true
+    getSelectedLine().isDrag = true
     alignTextCenter()
+    getSelectedLine().isDrag = false
     renderMeme()
 }
 
 function onAlignTextRight() {
-    gIsLineMove = true
+    getSelectedLine().isDrag = true
     alignTextRight()
+    getSelectedLine().isDrag = false
     renderMeme()
 }
 
 function onMoveLineDown() {
-    gIsLineMove = true
+    getSelectedLine().isDrag = true
     moveLineDown()
+    getSelectedLine().isDrag = false
     renderMeme()
 }
 
 function onMoveLineUp() {
-    gIsLineMove = true
+    getSelectedLine().isDrag = true
     moveLineUp()
+    getSelectedLine().isDrag = false
     renderMeme()
 }
 
@@ -209,8 +209,6 @@ function onUploadImg() {
 }
 
 // still under working:
-
-
 function onDown(ev) {
     // Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
@@ -218,46 +216,44 @@ function onDown(ev) {
     let clickedlineIdx = gMeme.lines.findIndex((line) => isLineClicked(pos, line))
 
     if (clickedlineIdx === -1) return
-    // console.log('clickedlineIdx', clickedlineIdx)
 
     onSwitchLine(clickedlineIdx)
     renderMeme()
-    setLineDrag(true)
+    // setLineDrag(true)
+    gIsMouseDrag = true
 
     gStartPos = pos
-    document.body.style.cursor = 'grabbing'
+    gElCanvas.style.cursor = 'grabbing'
 
 }
 
 function onMove(ev) {
-    const meme = getMeme()
+    
 
-    const { isDrag } = meme.lines[meme.selectedLineIdx]
-    if (!isDrag) return
-    // console.log('Moving the line')
+    // if (getSelectedLine().isDrag) return
+    if (!gIsMouseDrag) return
 
     const pos = getEvPos(ev)
-    console.log('pos', pos)
+
     // Calc the delta, the diff we moved
+    // const dx = pos.x - gStartPos.x
+    // const dy = pos.y - gStartPos.y
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
 
-    console.log('dx', dx)
-    console.log('dy', dy)
     moveLine(dx, dy)
     // Save the last pos, we remember where we`ve been and move accordingly
-    gStartPos = meme.lines[meme.selectedLineIdx].pos
+    gStartPos = getSelectedLine().pos
     // The canvas is render again after every move
+    
+    
     renderMeme()
 }
 
 function onUp() {
-    // console.log('onUp')
-    setLineDrag(false)
-    document.body.style.cursor = 'grab'
-    renderMeme()
+    gIsMouseDrag = false
+    gElCanvas.style.cursor =  'grab'
 }
-
 
 function isLineClicked(clickedPos, line) {
 
@@ -273,13 +269,11 @@ function isLineClicked(clickedPos, line) {
         mouseX >= x - widthAddon &&
         mouseY <= y + heightAddon &&
         mouseY >= y - heightAddon) {
-        // console.log('OKAY')
         return true
     } else {
         return false
     }
 }
-
 
 function getEvPos(ev) {
 

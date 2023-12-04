@@ -1,6 +1,5 @@
 'use strict'
 
-
 var gImgs = []
 
 _createGallery()

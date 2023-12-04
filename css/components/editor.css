@@ -13,6 +13,10 @@ canvas {
     aspect-ratio: 1;
 }
 
+canvas:hover{
+    cursor: grab;
+    
+}
 aside {
     
     border: 0.3em solid var(--clrPrimery);
