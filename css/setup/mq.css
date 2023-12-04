@@ -99,7 +99,7 @@
 
     .editor-section {
         display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
         gap: 4em;
         align-items: center;
         justify-content: center;
