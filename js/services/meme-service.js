@@ -31,10 +31,12 @@ function setFontSize(value) {
 function setFillColor(value) {
 
     getSelectedLine().fill = value
+    setClrtoClrBtn('btn-fill-color')
 }
 
 function setOutlineColor(value) {
     getSelectedLine().color = value
+    setClrtoClrBtn('btn-stroke-color')
 }
 
 function getSelectedLine() {
@@ -65,6 +67,17 @@ function switchLine(idx) {
 
 function getTextBoundry(){
     return gCtx.measureText(getSelectedLine().txt) 
+}
+
+function setClrtoClrBtn(btn){
+    
+    const btnClass = (btn === 'btn-fill-color') ?  '.btn-fill-color' : '.btn-stroke-color'
+    const btnType = (btn === 'btn-fill-color')? 'fill' : 'color' 
+    const elBtn = document.querySelector(btnClass)
+    
+    elBtn.style.backgroundColor = getSelectedLine()[btnType] 
+
+
 }
 
 function highlightLine() {

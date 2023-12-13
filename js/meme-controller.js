@@ -81,6 +81,8 @@ function renderImg(imgId, lines) {
             renderText(line, x, y, idx)
         });
         highlightLine()
+        setClrtoClrBtn('btn-stroke-color')
+        setClrtoClrBtn('btn-fill-color')
         setDragToLines(false)
     }
 

@@ -3,25 +3,31 @@
     --clrGradiant:linear-gradient(to right, #0F9BB3, #30BB73);
    
     /*Base colors*/
-    --clrBase: #22252C; /*background */
-    --clrPrimery: #383B42; /*sections and mains*/ 
+    --clrBase: #ffffff; /*background */
+    --clrPrimery: #cfd8dc; /*sections and mains*/ 
     
-    /*Gallery Area */
-    --clrSecondery1: #87898D; /*key words bar */
-    --clrSecondery2: #4f4e4e; /*search input */
-    --clrSecondery3: #FEFEFE; /*header button and text*/
+    /*Greys and black */
+    --clrGrey1: #cfd8dc; 
+    --clrGrey2: #bdc1c6; 
+    --clrGrey3: #595959; 
+    --clrGrey4: #3c4043; 
+    --clrGrey5: #202124; 
  
+    /* gmail */
+    --clrMail0: #f6f8fc; /*backGround*/
+    --clrMail1: #d3e3fd;
+    --clrMail2: #eaf1fb;
+    
+    
+    /*notes colors pallet */
+    --clrSecondery1: #feefc3; 
+    --clrSecondery2: #ffccbc; 
+    --clrSecondery3: #4285f4; 
+    --clrSecondery4: #9fa8da; 
+    --clrSecondery5: #b2dfdb; 
+    --clrSecondery5: #d1c4e9; 
 
     
-    /*Meme Area */
-    --clrSecondery4: #EBEEF3; /*line input and buttons*/
-    --clrSecondery5: #33ABC9; /*switch line btn*/
-    --clrSecondery6: #40DD58; /*add line btn*/
-    --clrSecondery7: #E74336; /*delete line btn*/
-    --clrSecondery8: #19A59F; /*text editing area*/
-    --clrSecondery9: #1E7CD3; /*share btn*/
-    --clrSecondery10: #8F44BB; /*download btn*/
-    --clrSecondery11: #e2de12; /*move up/down btn*/
     
 
 

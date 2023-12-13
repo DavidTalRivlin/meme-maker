@@ -87,3 +87,11 @@
 .line-ctrl-btns > *{
 justify-self: center;
 }
+
+.btn-stroke-color{
+background-color: var(--clrSecondery4);
+}
+
+.btn-fill-color{
+background-color: var(--clrSecondery4); 
+}
